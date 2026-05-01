@@ -44,40 +44,56 @@ export function Hero() {
             <span className="font-semibold text-foreground">يُUniform لون البشرة، يقلل التصبغات، ويمنح ترطيبًا يدوم 24 ساعة.</span>
           </p>
 
-          {/* قسم قبل وبعد تفاعلي */}
+          {/* قسم قبل وبعد تفاعلي مع تأثير حركة ناعم */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6 text-center">الفرق قبل وبعد الاستخدام</h2>
             <div className="relative w-full max-w-xl mx-auto rounded-lg overflow-hidden shadow-lg">
-              {/* صورة قبل أو بعد حسب الحالة */}
-              {showAfter ? (
-                <img 
-                  src="/after.jpg" 
-                  alt="بعد استخدام المنتج" 
-                  className="w-full h-auto object-cover transition-opacity duration-500"
-                />
-              ) : (
-                <img 
-                  src="/before.jpg" 
-                  alt="قبل استخدام المنتج" 
-                  className="w-full h-auto object-cover transition-opacity duration-500"
-                />
-              )}
-              {/* زر التبديل التفاعلي */}
+              {/* صورة قبل أو بعد حسب الحالة مع تأثير تقاطع渐变 */}
+              <div className="absolute inset-0">
+                {showAfter ? (
+                  <>
+                    <img 
+                      src="/before.jpg" 
+                      alt="قبل استخدام المنتج" 
+                      className="w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out"
+                    />
+                    <img 
+                      src="/after.jpg" 
+                      alt="بعد استخدام المنتج" 
+                      className="w-full h-full object-cover opacity-100 transition-opacity duration-1000 ease-in-out"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <img 
+                      src="/before.jpg" 
+                      alt="قبل استخدام المنتج" 
+                      className="w-full h-full object-cover opacity-100 transition-opacity duration-1000 ease-in-out"
+                    />
+                    <img 
+                      src="/after.jpg" 
+                      alt="بعد استخدام المنتج" 
+                      className="w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out"
+                    />
+                  </>
+                )}
+              </div>
+              {/* زر التبديل التفاعلي مع تأثير حركة */}
               <button
                 onClick={() => setShowAfter(!showAfter)}
-                className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-full p-2.5 hover:bg-white/95 transition-all duration-200 ring-2 ring-primary/20"
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-full p-2.5 hover:bg-white/95 transition-all duration-300 ease-in-out transform hover:scale-105 ring-2 ring-primary/20"
                 aria-label="عرض الصورة قبل أو بعد"
               >
                 {showAfter ? (
-                  <ArrowLeft className="w-5 h-5 text-primary rotate-180" />
+                  <ArrowLeft className="w-5 h-5 text-primary rotate-180 transition-transform duration-300" />
                 ) : (
-                  <ArrowRight className="w-5 h-5 text-primary" />
+                  <ArrowRight className="w-5 h-5 text-primary transition-transform duration-300" />
                 )}
               </button>
-              {/* شريط التقدم التوضيحي */}
+              {/* شريط التقدم التوضيحي مع حركة سلسة */}
               <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary/20">
                 <div 
-                  className="absolute left-0 top-0 h-full w-[50%] bg-primary transition-width duration-500"
+                  className="absolute left-0 top-0 h-full w-[50%] bg-primary transition-width duration-1000 ease-in-out"
                   style={{ width: showAfter ? '100%' : '0%' }}
                 ></div>
               </div>
@@ -91,10 +107,10 @@ export function Hero() {
           <div className="flex flex-col items-center gap-6">
             <Button 
               size="lg" 
-              className="text-lg px-12 py-8 h-auto font-bold shadow-xl shadow-primary/40 hover:shadow-2xl hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
+              className="text-lg px-12 py-8 h-auto font-bold shadow-xl shadow-primary/40 hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 ease-in-out transform hover:-translate-y-0.5"
             >
               احصل على الكريم الآن - نتائج مرئية خلال أسبوع
-              <ArrowLeft className="mr-3 h-5 w-5" />
+              <ArrowLeft className="mr-3 h-5 w-5 transition-transform duration-300" />
             </Button>
             <p className="text-sm text-muted-foreground">
               عرض خاص: شحن مجاني + ضمان استرداد المال خلال 30 يومًا
