@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Sparkles, Leaf, Droplets } from "lucide-react"
+import { ArrowLeft, ArrowRight, Sparkles, Leaf, Droplets } from "lucide-react"
+import { useState } from "react"
 
 export function Hero() {
+  const [showAfter, setShowAfter] = useState(false)
+
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* خلفية ناعمة مع تدرجات */}
@@ -19,47 +22,92 @@ export function Hero() {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* شارة الثقة */}
+          {/* شارة الثقة - معدلة لتكون خاصة بالمنتج */}
           <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border rounded-full px-4 py-2 mb-8">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-muted-foreground">
-              +10,000 زبونة سعيدة في الجزائر
+              منتج العناية بالبشرة الأول في الجزائر
             </span>
           </div>
 
-          {/* العنوان الرئيسي الكبير */}
+          {/* العنوان الرئيسي الكبير - يركز على الفائدة الملموسة */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 text-foreground text-balance">
-            بشرة نضرة ومشرقة...
+            بشرة خالية من العيوب في 7 أيام
             <br />
-            <span className="text-primary">طبيعية 100%</span>
-            <br />
-            من الجزائر إلى بشرتك
+            <span className="text-primary">نتائج مضمونة وطبيعية</span>
           </h1>
 
-          {/* الوصف */}
+          {/* الوصف المركّز على منتج واحد */}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed text-pretty">
-            منتجات عناية بالبشرة طبيعية وفعالة، مصممة خصيصاً للبشرة الجزائرية في مناخنا الحار والجاف. 
-            <span className="font-semibold text-foreground"> ترطيب عميق، توحيد لون، مكافحة الحبوب والتصبغات.</span>
+            كريم العناية الشامل للبشرة الجزائرية، بتركيبة فريدة من الزيوت الطبيعية والمستخلصات النباتية.
+            <br />
+            <span className="font-semibold text-foreground">يُUniform لون البشرة، يقلل التصبغات، ويمنح ترطيبًا يدوم 24 ساعة.</span>
           </p>
 
-          {/* CTA واحد رئيسي */}
-          <div className="flex flex-col items-center gap-4">
-            <Button size="lg" className="text-lg px-10 py-7 h-auto font-bold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all">
-              تسوقي الآن - التوصيل لكل الولايات
-              <ArrowLeft className="mr-2 h-5 w-5" />
+          {/* قسم قبل وبعد تفاعلي */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-6 text-center">الفرق قبل وبعد الاستخدام</h2>
+            <div className="relative w-full max-w-xl mx-auto rounded-lg overflow-hidden shadow-lg">
+              {/* صورة قبل أو بعد حسب الحالة */}
+              {showAfter ? (
+                <img 
+                  src="/after.jpg" 
+                  alt="بعد استخدام المنتج" 
+                  className="w-full h-auto object-cover transition-opacity duration-500"
+                />
+              ) : (
+                <img 
+                  src="/before.jpg" 
+                  alt="قبل استخدام المنتج" 
+                  className="w-full h-auto object-cover transition-opacity duration-500"
+                />
+              )}
+              {/* زر التبديل التفاعلي */}
+              <button
+                onClick={() => setShowAfter(!showAfter)}
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-full p-2.5 hover:bg-white/95 transition-all duration-200 ring-2 ring-primary/20"
+                aria-label="عرض الصورة قبل أو بعد"
+              >
+                {showAfter ? (
+                  <ArrowLeft className="w-5 h-5 text-primary rotate-180" />
+                ) : (
+                  <ArrowRight className="w-5 h-5 text-primary" />
+                )}
+              </button>
+              {/* شريط التقدم التوضيحي */}
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary/20">
+                <div 
+                  className="absolute left-0 top-0 h-full w-[50%] bg-primary transition-width duration-500"
+                  style={{ width: showAfter ? '100%' : '0%' }}
+                ></div>
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground text-center">
+              اسحب المقبض أو اضغط على الزر لمقارنة النتائج
+            </p>
+          </div>
+
+          {/* CTA واحد رئيسي واضح */}
+          <div className="flex flex-col items-center gap-6">
+            <Button 
+              size="lg" 
+              className="text-lg px-12 py-8 h-auto font-bold shadow-xl shadow-primary/40 hover:shadow-2xl hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5"
+            >
+              احصل على الكريم الآن - نتائج مرئية خلال أسبوع
+              <ArrowLeft className="mr-3 h-5 w-5" />
             </Button>
             <p className="text-sm text-muted-foreground">
-              عرض خاص: خصم 20% على أول طلب
+              عرض خاص: شحن مجاني + ضمان استرداد المال خلال 30 يومًا
             </p>
           </div>
 
           {/* مؤشرات الثقة */}
-          <div className="flex flex-wrap items-center justify-center gap-6 mt-12 pt-8 border-t border-border/50">
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-14 pt-10 border-t border-border/50">
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
                 <Leaf className="w-5 h-5 text-accent-foreground" />
               </div>
-              <span className="text-sm font-medium">طبيعي 100%</span>
+              <span className="text-sm font-medium">مكونات طبيعية 100%</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
@@ -71,7 +119,13 @@ export function Hero() {
               <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
                 <span className="text-lg">🚚</span>
               </div>
-              <span className="text-sm font-medium">توصيل لـ 58 ولاية</span>
+              <span className="text-sm font-medium">توصيل لجميع الولايات</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                <span className="text-lg">↩️</span>
+              </div>
+              <span className="text-sm font-medium">ضمان رضا كامل</span>
             </div>
           </div>
         </div>
