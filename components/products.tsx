@@ -1,8 +1,8 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { ShoppingBag, Star } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 const products = [
   {
@@ -35,8 +35,8 @@ const products = [
     originalPrice: 2200,
     rating: 4.7,
     reviews: 89,
-    badge: null,
-    color: "bg-orange-100"
+    badge: "",
+    color: "bg-yellow-100"
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const products = [
     rating: 4.9,
     reviews: 178,
     badge: "عرض خاص",
-    color: "bg-emerald-100"
+    color: "bg-orange-100"
   },
   {
     id: 5,
@@ -55,10 +55,10 @@ const products = [
     description: "للوجه والشعر - عضوي 100%",
     price: 3500,
     originalPrice: 4200,
-    rating: 5.0,
+    rating: 5,
     reviews: 234,
     badge: "الأفضل تقييماً",
-    color: "bg-yellow-100"
+    color: "bg-green-100"
   },
   {
     id: 6,
@@ -68,8 +68,8 @@ const products = [
     originalPrice: 5000,
     rating: 4.8,
     reviews: 145,
-    badge: null,
-    color: "bg-pink-100"
+    badge: "",
+    color: "bg-purple-100"
   }
 ]
 
@@ -90,12 +90,14 @@ export function Products() {
           </p>
         </div>
 
-       <div className="grid grid-cols-1 gap-6">
+        {/* شبكة المنتجات */}
+        <div className="grid grid-cols-1 gap-6">
           {products.map((product) => (
-            <Card key={product.id} className="group overflow-hidden border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
-              <div className={`relative aspect-square overflow-hidden ${product.color}`}>
+            <Card key={product.id} className="group overflow-hidden border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-row">
+              {/* صورة المنتج */}
+              <div className={`relative w-40 shrink-0 overflow-hidden ${product.color}`}>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center">
                     <span className="text-4xl">🧴</span>
                   </div>
                 </div>
@@ -104,26 +106,28 @@ export function Products() {
                     {product.badge}
                   </span>
                 )}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-foreground/10">
-                  <Button className="shadow-lg font-semibold">
-                    <ShoppingBag className="w-4 h-4 ml-2" />
-                    أضيفي للسلة
-                  </Button>
-                </div>
               </div>
-              <CardContent className="p-5">
-                <div className="flex items-center gap-1 mb-2">
-                  <Star className="w-4 h-4 fill-primary text-primary" />
-                  <span className="text-sm font-medium">{product.rating}</span>
-                  <span className="text-xs text-muted-foreground">({product.reviews} تقييم)</span>
+
+              {/* تفاصيل المنتج */}
+              <CardContent className="p-5 flex flex-col justify-between flex-1">
+                <div>
+                  <div className="flex items-center gap-1 mb-2">
+                    <Star className="w-4 h-4 fill-primary text-primary" />
+                    <span className="text-sm font-medium">{product.rating}</span>
+                    <span className="text-xs text-muted-foreground">({product.reviews} تقييم)</span>
+                  </div>
+                  <h3 className="font-bold text-lg mb-1">{product.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
                 </div>
-                <h3 className="font-bold text-lg mb-1">{product.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="text-xl font-bold text-primary">{product.price} دج</span>
                     <span className="text-sm text-muted-foreground line-through">{product.originalPrice} دج</span>
                   </div>
+                  <Button className="shadow-lg font-semibold">
+                    <ShoppingBag className="w-4 h-4 ml-2" />
+                    أضيفي للسلة
+                  </Button>
                 </div>
               </CardContent>
             </Card>
