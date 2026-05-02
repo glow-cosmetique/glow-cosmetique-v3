@@ -5,7 +5,7 @@ export function Products() {
     <section id="products" className="bg-white" dir="rtl">
 
       {/* ══ القسم العلوي ══ */}
-      <div className="flex flex-col md:flex-row">
+     <div className="flex flex-col md:flex-row-reverse">
 
         {/* يسار: نص + صورة المنتج + تفاصيل + سعر + زر */}
         <div className="w-full md:w-1/2 flex flex-col p-6 md:p-10 bg-white">
