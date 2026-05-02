@@ -45,7 +45,7 @@ export function Products() {
         </div>
 
         {/* يمين: صورة قبل/بعد بالطول */}
-        <div className="w-full md:w-1/2 relative overflow-hidden" style={{ minHeight: "600px" }}>
+       className="w-full md:w-1/2 relative overflow-hidden border-2 border-black rounded-2xl"
           <div className="grid grid-cols-2 h-full">
             <div className="relative bg-rose-100 flex items-center justify-center h-full" style={{ minHeight: "600px" }}>
               <div className="w-28 h-28 rounded-full bg-white/40 flex items-center justify-center">
