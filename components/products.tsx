@@ -90,8 +90,7 @@ export function Products() {
           </p>
         </div>
 
-        {/* شبكة المنتجات */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+       <div className="grid grid-cols-1 gap-6">
           {products.map((product) => (
             <Card key={product.id} className="group overflow-hidden border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
               <div className={`relative aspect-square overflow-hidden ${product.color}`}>
