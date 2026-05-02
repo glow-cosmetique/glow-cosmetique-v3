@@ -17,7 +17,7 @@ export function Products() {
               <p className="text-gray-400 text-xs text-center">صورة<br />المنتج</p>
             </div>
           </div>
-          <div className="border border-gray-200 rounded-xl p-4 mb-4">
+         <div className="border border-black rounded-xl p-4 mb-4">
             <p className="font-black text-base text-black mb-2">تركيـــبة ذكية تعمل على</p>
             <ul className="text-sm text-gray-700 space-y-1.5">
               <li>+ &nbsp;تزيل الخلايا الميتة للبشرة.</li>
