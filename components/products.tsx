@@ -1,105 +1,109 @@
 "use client"
 
-const productsList = [
-  {
-    id: 1,
-    name: "كريم مرطب بزيت الأرغان",
-    description: "كريم مرطب بزيت الأرغان الجزائري النقي — يرطب البشرة عمقياً ويدوم 24 ساعة. مناسب لكل أنواع البشرة خاصة الجافة والحساسة.",
-    color: "bg-rose-50",
-  },
-  {
-    id: 2,
-    name: "سيروم فيتامين C",
-    description: "سيروم فيتامين C المركّز — يوحّد لون البشرة ويعالج التصبغات والبقع الداكنة. نتائج ملحوظة خلال أسبوعين فقط.",
-    color: "bg-amber-50",
-  },
-]
-
 export function Products() {
   return (
-    <section id="products" className="py-20 bg-white" dir="rtl">
-      <div className="max-w-5xl mx-auto px-4">
+    <section id="products" className="bg-white" dir="rtl">
 
-        {/* العنوان */}
-        <div className="text-center mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">منتجاتنا المميزة</span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">اختاري ما يناسب بشرتك</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            كل منتجاتنا مصنوعة من مكونات طبيعية محلية، مثبتة علمياً وآمنة لكل أنواع البشرة
-          </p>
+      {/* ══ القسم الأول: نص + صورة المنتج يسار / صورة قبل-بعد يمين ══ */}
+      <div className="flex flex-col md:flex-row min-h-[90vh]">
+
+        {/* يسار: نص كبير + صورة المنتج */}
+        <div className="w-full md:w-1/2 flex flex-col justify-between p-8 md:p-14 bg-white border-b md:border-b-0 md:border-l border-gray-100">
+          {/* النص الكبير */}
+          <div>
+            <h2 className="text-5xl md:text-6xl font-black text-black leading-tight mb-4">
+              لبشرة مشرقة<br />
+              وخالية من<br />
+              الشوائب
+            </h2>
+            <div className="w-24 h-1 bg-black mb-8 rounded-full" />
+          </div>
+
+          {/* صورة المنتج */}
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-48 h-72 bg-gray-100 rounded-2xl border border-gray-200 flex items-center justify-center shadow-sm">
+              <p className="text-gray-400 text-xs text-center">ضع صورة<br />المنتج هنا</p>
+            </div>
+            {/* تفاصيل المنتج */}
+            <div className="w-full border border-gray-200 rounded-2xl p-5">
+              <p className="font-black text-lg text-black mb-3">تركيـــبة ذكية تعمل على</p>
+              <ul className="text-sm text-gray-700 space-y-2">
+                <li>+ &nbsp; تزيل الخلايا الميتة للبشرة.</li>
+                <li>+ &nbsp; تعالج ظهور البثور الجلدية.</li>
+                <li>+ &nbsp; تمنع الرؤوس و الشوائب.</li>
+                <li>+ &nbsp; تنظم إفراز الدهون.</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        {productsList.map((product) => (
-          <div key={product.id} className="mb-24">
-
-            {/* القسم العلوي: صورة كبيرة يمين + صورة المنتج والوصف يسار */}
-            <div className="flex flex-col md:flex-row gap-6 items-stretch mb-8">
-
-              {/* يمين: صورة قبل/بعد كبيرة جداً */}
-              <div className="w-full md:w-1/2 shrink-0">
-                <div className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-md h-full min-h-[350px]">
-                  <div className="grid grid-cols-2 h-full">
-                    <div className={`relative ${product.color} flex items-center justify-center min-h-[350px]`}>
-                      <div className="w-28 h-28 rounded-full bg-white/50 flex items-center justify-center">
-                        <span className="text-6xl">😔</span>
-                      </div>
-                      <span className="absolute top-4 right-4 bg-black/60 text-white text-sm font-bold px-3 py-1 rounded-full">قبل</span>
-                    </div>
-                    <div className="relative bg-green-50 flex items-center justify-center min-h-[350px]">
-                      <div className="w-28 h-28 rounded-full bg-white/50 flex items-center justify-center">
-                        <span className="text-6xl">✨</span>
-                      </div>
-                      <span className="absolute top-4 left-4 bg-black/60 text-white text-sm font-bold px-3 py-1 rounded-full">بعد</span>
-                    </div>
-                  </div>
-                  <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white z-10" />
-                </div>
+        {/* يمين: صورة قبل/بعد كبيرة جداً */}
+        <div className="w-full md:w-1/2 relative overflow-hidden min-h-[50vh] md:min-h-full">
+          <div className="grid grid-cols-2 h-full">
+            {/* قبل */}
+            <div className="relative bg-rose-100 flex items-center justify-center min-h-[50vh]">
+              <div className="w-32 h-32 rounded-full bg-white/40 flex items-center justify-center">
+                <span className="text-7xl">😔</span>
               </div>
+              <span className="absolute top-5 right-5 text-white text-lg font-black">[قبل]</span>
+            </div>
+            {/* بعد */}
+            <div className="relative bg-green-100 flex items-center justify-center min-h-[50vh]">
+              <div className="w-32 h-32 rounded-full bg-white/40 flex items-center justify-center">
+                <span className="text-7xl">✨</span>
+              </div>
+              <span className="absolute top-5 left-5 text-white text-lg font-black">[بعد]</span>
+            </div>
+          </div>
+          {/* خط الفصل */}
+          <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white z-10" />
+        </div>
+      </div>
 
-              {/* يسار: صورة المنتج + الوصف */}
-              <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center">
-                {/* صورة المنتج */}
-                <div className={`rounded-2xl ${product.color} flex items-center justify-center p-8 border border-gray-200`}>
-                  <div className="w-32 h-48 bg-white/70 rounded-xl flex items-center justify-center shadow-sm">
-                    <p className="text-gray-400 text-xs text-center">صورة<br />المنتج</p>
-                  </div>
+      {/* ══ عنوان النتائج في المنتصف ══ */}
+      <div className="text-center py-16 bg-white">
+        <h2 className="text-4xl md:text-5xl font-black text-black leading-tight">
+          نتائج استخدام<br />حمض الساليسيليك
+        </h2>
+      </div>
+
+      {/* ══ صور قبل/بعد عمودية كبيرة ══ */}
+      <div className="flex flex-col">
+        {[
+          { bg1: "bg-rose-50", bg2: "bg-green-50" },
+          { bg1: "bg-amber-50", bg2: "bg-emerald-50" },
+          { bg1: "bg-orange-50", bg2: "bg-teal-50" },
+          { bg1: "bg-pink-50", bg2: "bg-lime-50" },
+        ].map((item, i) => (
+          <div key={i} className="relative overflow-hidden border-b border-gray-100">
+            <div className="grid grid-cols-2">
+              {/* بعد — يسار */}
+              <div className={`relative ${item.bg2} flex items-center justify-center`} style={{ minHeight: "320px" }}>
+                <div className="w-28 h-28 rounded-full bg-white/50 flex items-center justify-center">
+                  <span className="text-6xl">✨</span>
                 </div>
-                {/* الوصف */}
-                <p className="text-gray-600 text-sm leading-relaxed">{product.description}</p>
+                <span className="absolute top-5 right-5 text-black text-base font-black">[بعد]</span>
+                <span className="absolute bottom-5 right-5 left-5 text-center text-xs text-gray-500">
+                  ضع صورة بعد الاستخدام
+                </span>
+              </div>
+              {/* قبل — يمين */}
+              <div className={`relative ${item.bg1} flex items-center justify-center`} style={{ minHeight: "320px" }}>
+                <div className="w-28 h-28 rounded-full bg-white/50 flex items-center justify-center">
+                  <span className="text-6xl">😔</span>
+                </div>
+                <span className="absolute top-5 left-5 text-black text-base font-black">[قبل]</span>
+                <span className="absolute bottom-5 right-5 left-5 text-center text-xs text-gray-500">
+                  ضع صورة قبل الاستخدام
+                </span>
               </div>
             </div>
-
-            {/* اسم المنتج في الوسط مع خط داكن */}
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-extrabold text-black inline-block">
-                نتائج استخدام {product.name}
-              </h3>
-              <div className="w-24 h-1 bg-black mx-auto mt-2 rounded-full" />
-            </div>
-
-            {/* 4 صور قبل/بعد عمودية بحجم كبير */}
-            <div className="flex flex-col gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-                  <div className="grid grid-cols-2">
-                    <div className={`relative ${product.color} h-48 flex items-center justify-center`}>
-                      <span className="text-5xl">😔</span>
-                      <span className="absolute top-3 right-3 bg-black/60 text-white text-xs font-bold px-3 py-1 rounded-full">قبل</span>
-                    </div>
-                    <div className="relative bg-green-50 h-48 flex items-center justify-center">
-                      <span className="text-5xl">✨</span>
-                      <span className="absolute top-3 left-3 bg-black/60 text-white text-xs font-bold px-3 py-1 rounded-full">بعد</span>
-                    </div>
-                  </div>
-                  <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white z-10" />
-                </div>
-              ))}
-            </div>
-
+            {/* خط الفصل */}
+            <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white z-10" />
           </div>
         ))}
-
       </div>
+
     </section>
   )
 }
