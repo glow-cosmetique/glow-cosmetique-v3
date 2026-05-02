@@ -74,7 +74,7 @@ export function Products() {
       </div>
 
       {/* ══ 4 صور قبل/بعد بالطول ══ */}
-     <div className="flex flex-col gap-4 px-4">
+    <div className="flex flex-col gap-8 px-4">
         {[1, 2, 3, 4].map((i) => (
           <div key={i} className="relative overflow-hidden border-b border-gray-100">
             <div className="grid grid-cols-2">
