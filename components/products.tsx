@@ -4,101 +4,109 @@ export function Products() {
   return (
     <section id="products" className="bg-white" dir="rtl">
 
-      {/* ══ القسم الأول: نص + صورة المنتج يسار / صورة قبل-بعد يمين ══ */}
-      <div className="flex flex-col md:flex-row min-h-[90vh]">
+      {/* ══ القسم العلوي: يسار نص+منتج / يمين صورة قبل-بعد ══ */}
+      <div className="flex flex-col md:flex-row">
 
-        {/* يسار: نص كبير + صورة المنتج */}
-        <div className="w-full md:w-1/2 flex flex-col justify-between p-8 md:p-14 bg-white border-b md:border-b-0 md:border-l border-gray-100">
+        {/* يسار: نص + صورة المنتج + تفاصيل + سعر + زر */}
+        <div className="w-full md:w-1/2 flex flex-col p-6 md:p-10 bg-white">
+
           {/* النص الكبير */}
-          <div>
-            <h2 className="text-5xl md:text-6xl font-black text-black leading-tight mb-4">
-              لبشرة مشرقة<br />
-              وخالية من<br />
-              الشوائب
-            </h2>
-            <div className="w-24 h-1 bg-black mb-8 rounded-full" />
-          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-black leading-tight mb-2">
+            لبشرة مشرقة<br />وخالية من<br />الشوائب
+          </h2>
 
           {/* صورة المنتج */}
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-48 h-72 bg-gray-100 rounded-2xl border border-gray-200 flex items-center justify-center shadow-sm">
-              <p className="text-gray-400 text-xs text-center">ضع صورة<br />المنتج هنا</p>
-            </div>
-            {/* تفاصيل المنتج */}
-            <div className="w-full border border-gray-200 rounded-2xl p-5">
-              <p className="font-black text-lg text-black mb-3">تركيـــبة ذكية تعمل على</p>
-              <ul className="text-sm text-gray-700 space-y-2">
-                <li>+ &nbsp; تزيل الخلايا الميتة للبشرة.</li>
-                <li>+ &nbsp; تعالج ظهور البثور الجلدية.</li>
-                <li>+ &nbsp; تمنع الرؤوس و الشوائب.</li>
-                <li>+ &nbsp; تنظم إفراز الدهون.</li>
-              </ul>
+          <div className="flex justify-center my-4">
+            <div className="w-36 h-52 bg-gray-100 rounded-xl border border-gray-200 flex items-center justify-center shadow-sm">
+              <p className="text-gray-400 text-xs text-center">صورة<br />المنتج</p>
             </div>
           </div>
+
+          {/* تفاصيل المنتج */}
+          <div className="border border-gray-200 rounded-xl p-4 mb-4">
+            <p className="font-black text-base text-black mb-2">تركيـــبة ذكية تعمل على</p>
+            <ul className="text-sm text-gray-700 space-y-1.5">
+              <li>+ &nbsp;تزيل الخلايا الميتة للبشرة.</li>
+              <li>+ &nbsp;تعالج ظهور البثور الجلدية.</li>
+              <li>+ &nbsp;تمنع الرؤوس و الشوائب.</li>
+              <li>+ &nbsp;تنظم إفراز الدهون.</li>
+            </ul>
+          </div>
+
+          {/* اسم المنتج */}
+          <p className="text-center text-xs font-bold border border-black rounded px-2 py-1 mb-3 self-center tracking-widest">
+            [ ACIDE SALICYLIQUE ]
+          </p>
+
+          {/* السعر */}
+          <div className="flex items-center justify-between mb-3 px-1">
+            <span className="text-xs text-gray-400 leading-tight">عرض خـــاص<br />لمدة محدودة فقط</span>
+            <div className="text-right">
+              <p className="text-2xl font-black text-black">1900 <span className="text-base font-bold">DA</span></p>
+              <p className="text-sm text-gray-400 line-through">4600 DA</p>
+            </div>
+          </div>
+
+          {/* زر الشراء */}
+          <button
+            onClick={() => document.getElementById("order-section")?.scrollIntoView({ behavior: "smooth" })}
+            className="w-full bg-black text-white font-extrabold py-4 rounded-xl text-base hover:bg-gray-900 transition-colors"
+          >
+            لا تضيع الفرصة، أحصل عليه الآن !
+          </button>
         </div>
 
-        {/* يمين: صورة قبل/بعد كبيرة جداً */}
-        <div className="w-full md:w-1/2 relative overflow-hidden min-h-[50vh] md:min-h-full">
+        {/* يمين: صورة قبل/بعد كبيرة */}
+        <div className="w-full md:w-1/2 relative overflow-hidden min-h-[400px]">
           <div className="grid grid-cols-2 h-full">
-            {/* قبل */}
-            <div className="relative bg-rose-100 flex items-center justify-center min-h-[50vh]">
-              <div className="w-32 h-32 rounded-full bg-white/40 flex items-center justify-center">
-                <span className="text-7xl">😔</span>
+            <div className="relative bg-rose-100 flex items-center justify-center min-h-[400px]">
+              <div className="w-28 h-28 rounded-full bg-white/40 flex items-center justify-center">
+                <span className="text-6xl">😔</span>
               </div>
-              <span className="absolute top-5 right-5 text-white text-lg font-black">[قبل]</span>
+              <span className="absolute top-4 right-4 text-white text-base font-black drop-shadow">[قبل]</span>
+              <p className="absolute bottom-4 text-xs text-gray-500 text-center px-2">ضع صورة قبل الاستخدام</p>
             </div>
-            {/* بعد */}
-            <div className="relative bg-green-100 flex items-center justify-center min-h-[50vh]">
-              <div className="w-32 h-32 rounded-full bg-white/40 flex items-center justify-center">
-                <span className="text-7xl">✨</span>
+            <div className="relative bg-green-100 flex items-center justify-center min-h-[400px]">
+              <div className="w-28 h-28 rounded-full bg-white/40 flex items-center justify-center">
+                <span className="text-6xl">✨</span>
               </div>
-              <span className="absolute top-5 left-5 text-white text-lg font-black">[بعد]</span>
+              <span className="absolute top-4 left-4 text-white text-base font-black drop-shadow">[بعد]</span>
+              <p className="absolute bottom-4 text-xs text-gray-500 text-center px-2">ضع صورة بعد الاستخدام</p>
             </div>
           </div>
-          {/* خط الفصل */}
           <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white z-10" />
         </div>
       </div>
 
-      {/* ══ عنوان النتائج في المنتصف ══ */}
-      <div className="text-center py-16 bg-white">
-        <h2 className="text-4xl md:text-5xl font-black text-black leading-tight">
+      {/* ══ عنوان النتائج ══ */}
+      <div className="text-center py-12 bg-white border-t border-gray-100">
+        <h2 className="text-3xl md:text-4xl font-black text-black leading-tight">
           نتائج استخدام<br />حمض الساليسيليك
         </h2>
       </div>
 
-      {/* ══ صور قبل/بعد عمودية كبيرة ══ */}
+      {/* ══ 4 صور قبل/بعد كاملة العرض ══ */}
       <div className="flex flex-col">
-        {[
-          { bg1: "bg-rose-50", bg2: "bg-green-50" },
-          { bg1: "bg-amber-50", bg2: "bg-emerald-50" },
-          { bg1: "bg-orange-50", bg2: "bg-teal-50" },
-          { bg1: "bg-pink-50", bg2: "bg-lime-50" },
-        ].map((item, i) => (
+        {[1, 2, 3, 4].map((i) => (
           <div key={i} className="relative overflow-hidden border-b border-gray-100">
             <div className="grid grid-cols-2">
               {/* بعد — يسار */}
-              <div className={`relative ${item.bg2} flex items-center justify-center`} style={{ minHeight: "320px" }}>
-                <div className="w-28 h-28 rounded-full bg-white/50 flex items-center justify-center">
-                  <span className="text-6xl">✨</span>
+              <div className="relative bg-green-50 flex items-center justify-center" style={{ minHeight: "300px" }}>
+                <div className="w-24 h-24 rounded-full bg-white/50 flex items-center justify-center">
+                  <span className="text-5xl">✨</span>
                 </div>
-                <span className="absolute top-5 right-5 text-black text-base font-black">[بعد]</span>
-                <span className="absolute bottom-5 right-5 left-5 text-center text-xs text-gray-500">
-                  ضع صورة بعد الاستخدام
-                </span>
+                <span className="absolute top-4 right-4 text-black text-sm font-black">[بعد]</span>
+                <p className="absolute bottom-3 text-xs text-gray-400 text-center px-2">ضع صورة بعد الاستخدام</p>
               </div>
               {/* قبل — يمين */}
-              <div className={`relative ${item.bg1} flex items-center justify-center`} style={{ minHeight: "320px" }}>
-                <div className="w-28 h-28 rounded-full bg-white/50 flex items-center justify-center">
-                  <span className="text-6xl">😔</span>
+              <div className="relative bg-rose-50 flex items-center justify-center" style={{ minHeight: "300px" }}>
+                <div className="w-24 h-24 rounded-full bg-white/50 flex items-center justify-center">
+                  <span className="text-5xl">😔</span>
                 </div>
-                <span className="absolute top-5 left-5 text-black text-base font-black">[قبل]</span>
-                <span className="absolute bottom-5 right-5 left-5 text-center text-xs text-gray-500">
-                  ضع صورة قبل الاستخدام
-                </span>
+                <span className="absolute top-4 left-4 text-black text-sm font-black">[قبل]</span>
+                <p className="absolute bottom-3 text-xs text-gray-400 text-center px-2">ضع صورة قبل الاستخدام</p>
               </div>
             </div>
-            {/* خط الفصل */}
             <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white z-10" />
           </div>
         ))}
@@ -107,3 +115,4 @@ export function Products() {
     </section>
   )
 }
+
