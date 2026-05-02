@@ -5,10 +5,10 @@ export function Products() {
     <section id="products" className="bg-white w-full" dir="rtl">
 
       {/* ══ القسم العلوي: Grid عمودان ══ */}
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-2">
 
-        {/* العمود الأيسر: نص + صورة المنتج + تفاصيل + سعر + زر */}
-        <div className="flex flex-col justify-between gap-6 p-6 md:p-12 bg-white order-2 md:order-1">
+        {/* العمود الأيمن: نص + صورة المنتج + تفاصيل + سعر + زر */}
+        <div className="flex flex-col justify-between gap-6 p-6 md:p-12 bg-white">
 
           {/* النص الكبير */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-tight">
@@ -56,25 +56,21 @@ export function Products() {
           </button>
         </div>
 
-        {/* العمود الأيمن: صورة قبل/بعد كبيرة */}
-        <div className="relative overflow-hidden border-2 border-black order-1 md:order-2" style={{ minHeight: "500px" }}>
+        {/* العمود الأيسر: صورة قبل/بعد كبيرة */}
+        <div className="relative overflow-hidden border-2 border-black" style={{ minHeight: "500px" }}>
           <div className="grid grid-cols-2 h-full">
             {/* قبل */}
             <div className="relative bg-rose-100 flex items-center justify-center h-full" style={{ minHeight: "500px" }}>
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-28 h-28 rounded-full bg-white/40 flex items-center justify-center">
-                  <span className="text-6xl">😔</span>
-                </div>
+              <div className="w-28 h-28 rounded-full bg-white/40 flex items-center justify-center">
+                <span className="text-6xl">😔</span>
               </div>
               <span className="absolute top-5 right-5 text-white text-lg font-black drop-shadow-lg">[قبل]</span>
               <p className="absolute bottom-5 text-xs text-gray-400 text-center px-4">ضع صورة قبل الاستخدام</p>
             </div>
             {/* بعد */}
             <div className="relative bg-green-100 flex items-center justify-center h-full" style={{ minHeight: "500px" }}>
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-28 h-28 rounded-full bg-white/40 flex items-center justify-center">
-                  <span className="text-6xl">✨</span>
-                </div>
+              <div className="w-28 h-28 rounded-full bg-white/40 flex items-center justify-center">
+                <span className="text-6xl">✨</span>
               </div>
               <span className="absolute top-5 left-5 text-white text-lg font-black drop-shadow-lg">[بعد]</span>
               <p className="absolute bottom-5 text-xs text-gray-400 text-center px-4">ضع صورة بعد الاستخدام</p>
@@ -122,4 +118,3 @@ export function Products() {
     </section>
   )
 }
-
