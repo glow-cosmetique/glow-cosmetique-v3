@@ -95,7 +95,7 @@ export function Products() {
           {products.map((product) => (
             <Card key={product.id} className="group overflow-hidden border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-row">
               {/* صورة المنتج */}
-              <div className={`relative w-40 shrink-0 overflow-hidden ${product.color}`}>
+              <div className={`relative w-72 shrink-0 overflow-hidden ${product.color}`}>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-20 h-20 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center">
                     <span className="text-4xl">🧴</span>
