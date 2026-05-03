@@ -14,23 +14,22 @@ export default function LandingPage() {
     <div className="relative min-h-screen bg-background pb-24">
       <Header />
 
-     <Products />
-
-<section id="order-section">
-  <OrderForm />
-</section>
-
-<MidCTA />
-<Testimonials />
+      <main className="pt-28">
+        <Hero />
+        <Features />
+        <Products />
 
         <section id="order-section">
           <OrderForm />
         </section>
+
+        <MidCTA />
+        <Testimonials />
       </main>
 
       <Footer />
 
-      {/* ✅ موبايل: زر كامل العرض في سطر واحد */}
+      {/* موبايل */}
       <div className="fixed bottom-0 left-0 w-full z-50 md:hidden p-4 bg-white border-t shadow-lg">
         <button
           onClick={() => document.getElementById("order-form")?.scrollIntoView({ behavior: "smooth" })}
@@ -40,7 +39,7 @@ export default function LandingPage() {
         </button>
       </div>
 
-      {/* ✅ Desktop: صورة + سعر + زر */}
+      {/* Desktop */}
       <div className="fixed bottom-0 left-0 w-full z-50 hidden md:block bg-white/90 backdrop-blur-md border-t shadow-lg p-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center gap-4">
           <div className="flex items-center gap-3">
