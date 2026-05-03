@@ -71,7 +71,7 @@ export default function OrderForm() {
 
       {/* ✅ الفورم */}
       <div className="bg-white p-10">
-        <h2 className="text-center text-[#2d5a27] font-bold text-2xl mb-8">
+        <h2 className="text-center text-black font-bold text-2xl mb-8">
           أدخل بياناتك أدناه لتأكيد طلبك الآن ↓
         </h2>
         <form onSubmit={handleSubmit} className="space-y-5">
