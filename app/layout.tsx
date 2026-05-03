@@ -60,7 +60,8 @@ export default function RootLayout({
                 "price": "1900",
                 "priceCurrency": "DZD",
                 "availability": "https://schema.org/InStock",
-                "areaServed": "DZ"
+
+                 "areaServed": "DZ"
               }
             })
           }}
