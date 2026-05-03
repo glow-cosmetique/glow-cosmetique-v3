@@ -61,7 +61,7 @@ export default function OrderForm() {
 
       {/* ✅ قسم البرومو */}
       <div className="bg-[#f0faf0] text-center px-8 py-8 border-b border-gray-100">
-       <span className="inline-block bg-gray-800/10 text-gray-800 text-sm font-semibold px-4 py-1 rounded-full mb-4">
+       <span className="inline-block bg-gray-800/10 text-gray-800 text-sm font-extrabold px-4 py-1 rounded-full mb-4">
           ✦ عرض لفترة محدودة ✦
         </span>
         <h3 className="text-2xl font-bold text-[#2d5a27] mb-2">احصلي عليه قبل نفاد الكمية</h3>
