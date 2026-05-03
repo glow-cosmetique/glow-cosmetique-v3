@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ShoppingBag, Star } from "lucide-react"
+import { Star } from "lucide-react"
 
 const products = [
   {
@@ -93,7 +93,11 @@ export function Products() {
         {/* شبكة المنتجات */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
-            <Card key={product.id} className="group overflow-hidden border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+            <Card
+              key={product.id}
+              className="overflow-hidden border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+            >
+              {/* صورة المنتج — بدون hover button */}
               <div className={`relative aspect-square overflow-hidden ${product.color}`}>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-32 h-32 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center">
@@ -105,12 +109,6 @@ export function Products() {
                     {product.badge}
                   </span>
                 )}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-foreground/10">
-                  <Button className="shadow-lg font-semibold">
-                    <ShoppingBag className="w-4 h-4 ml-2" />
-                    أضيفي للسلة
-                  </Button>
-                </div>
               </div>
 
               <CardContent className="p-5">
@@ -127,12 +125,21 @@ export function Products() {
 
                 {/* السعر */}
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="text-xl font-bold text-primary">{product.price.toLocaleString()} دج</span>
-                  <span className="text-sm text-muted-foreground line-through">{product.originalPrice.toLocaleString()} دج</span>
+                  <span className="text-xl font-bold text-primary">
+                    {product.price.toLocaleString()} دج
+                  </span>
+                  <span className="text-sm text-muted-foreground line-through">
+                    {product.originalPrice.toLocaleString()} دج
+                  </span>
                 </div>
 
-                {/* ✅ الزر — عرض كامل + نص في سطر واحد */}
-                <Button className="w-full font-bold text-sm whitespace-nowrap">
+                {/* ✅ زر ثابت — عرض كامل — لا يتكسر على موبايل */}
+                <Button
+                  className="w-full font-bold whitespace-nowrap"
+                  onClick={() => {
+                    document.getElementById("order-form")?.scrollIntoView({ behavior: "smooth" })
+                  }}
+                >
                   إشتري الآن - الدفع عند الإستلام
                 </Button>
               </CardContent>
