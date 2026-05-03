@@ -66,7 +66,7 @@ export default function OrderForm() {
         </span>
         <h3 className="text-2xl font-bold text-[#2d5a27] mb-2">احصلي عليه قبل نفاد الكمية</h3>
         <p className="text-4xl font-extrabold text-[#2d5a27] mb-4">1700 دج فقط</p>
-        <p className="text-gray-500 text-base">⬇ أدخلي بياناتك الآن لتأكيد طلبك</p>
+        
       </div>
 
       {/* ✅ الفورم */}
