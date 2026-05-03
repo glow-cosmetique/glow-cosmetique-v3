@@ -12,17 +12,17 @@ export function MidCTA() {
         <p className="text-primary-foreground/80 mb-8 max-w-lg mx-auto">
           انضمي لأكثر من 10,000 زبونة جزائرية اختارت العناية الطبيعية
         </p>
-        
-        {/* CTA رئيسي واحد مع Urgency */}
-        <Button 
-          size="lg" 
+
+        {/* ✅ الإصلاح: w-full على موبايل + sm:w-auto على desktop */}
+        <Button
+          size="lg"
           variant="secondary"
-          className="text-lg px-10 py-6 h-auto font-bold"
+          className="w-full sm:w-auto text-base sm:text-lg px-8 py-4 h-auto font-bold whitespace-nowrap"
         >
-          احصلي على خصم 20% الآن
+          إشتري الآن - الدفع عند الإستلام
           <ArrowLeft className="mr-2 h-5 w-5" />
         </Button>
-        
+
         <p className="text-sm text-primary-foreground/60 mt-4">
           العرض ينتهي قريباً - الكمية محدودة
         </p>
@@ -30,3 +30,4 @@ export function MidCTA() {
     </section>
   )
 }
+
