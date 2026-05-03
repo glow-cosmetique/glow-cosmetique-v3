@@ -45,7 +45,8 @@ export function Header() {
 
   return (
     <header className="fixed top-0 right-0 left-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
-      {/* ── شريط التوصيل العلوي ── */}
+
+      {/* ── شريط التوصيل ── */}
       <div className="bg-primary text-primary-foreground text-center py-2 px-4">
         <p className="text-xs sm:text-sm font-medium">
           توصيل مجاني للطلبات فوق 5000 دج - عرض محدود
@@ -53,11 +54,12 @@ export function Header() {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-3 items-center h-16">
 
-          {/* العمود الأول — العبارات المتحركة (desktop فقط) */}
-          {/* ✅ الإصلاح: حذف "flex" الزائدة قبل "hidden md:flex" */}
-          <div className="hidden md:flex justify-start overflow-hidden">
+        {/* ══ DESKTOP: 3 أعمدة ══ */}
+        <div className="hidden md:grid grid-cols-3 items-center h-16">
+
+          {/* يمين: عبارات متحركة */}
+          <div className="flex justify-start overflow-hidden">
             <span
               className="text-base font-bold text-foreground whitespace-nowrap"
               style={{ opacity: visible ? 1 : 0, transition: "opacity 0.4s ease" }}
@@ -66,31 +68,14 @@ export function Header() {
             </span>
           </div>
 
-          {/* على موبايل: اسم البراند في مكان العبارات */}
-          <div className="flex md:hidden justify-start">
-            <span className="text-sm font-bold text-foreground">
-              ✦ Glow
-            </span>
-          </div>
-
-          {/* العمود الثاني — nav (desktop فقط) */}
-          <nav className="hidden md:flex justify-center items-center gap-8">
-            <a
-              href="#products"
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-            >
+          {/* وسط: nav */}
+          <nav className="flex justify-center items-center gap-8">
+            <a href="#products" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
               منتجاتنا
             </a>
           </nav>
 
-          {/* على موبايل: اسم البراند في المنتصف */}
-          <div className="flex md:hidden justify-center">
-            <span className="text-base font-bold text-foreground">
-              Glow Cosmetique
-            </span>
-          </div>
-
-          {/* العمود الثالث — أزرار */}
+          {/* يسار: أزرار */}
           <div className="flex justify-end items-center gap-3">
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingBag className="h-5 w-5" />
@@ -98,21 +83,43 @@ export function Header() {
                 0
               </span>
             </Button>
-            <Button className="hidden sm:flex font-semibold">
+            <Button className="font-semibold">
               تسوقي الآن
             </Button>
-            {/* ✅ زر الهامبرغر — موبايل فقط */}
-            <button
-              className="md:hidden p-2"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
           </div>
         </div>
 
+        {/* ══ MOBILE: عبارة متحركة في المنتصف ══ */}
+        <div className="flex md:hidden items-center justify-between h-16">
+
+          {/* يمين: هامبرغر */}
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+
+          {/* وسط: العبارة المتحركة */}
+          <div className="flex-1 overflow-hidden mx-3 text-center">
+            <span
+              className="text-sm font-bold text-foreground whitespace-nowrap"
+              style={{ opacity: visible ? 1 : 0, transition: "opacity 0.4s ease" }}
+            >
+              {phrases[currentPhrase]}
+            </span>
+          </div>
+
+          {/* يسار: سلة */}
+          <Button variant="ghost" size="icon" className="relative">
+            <ShoppingBag className="h-5 w-5" />
+            <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs rounded-full flex items-center justify-center">
+              0
+            </span>
+          </Button>
+        </div>
+
         {/* ── القائمة المتنقلة ── */}
-        {/* ✅ الإصلاح: أضفنا bg-card ونصوص واضحة */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border bg-card">
             <nav className="flex flex-col gap-4">
@@ -129,7 +136,9 @@ export function Header() {
             </nav>
           </div>
         )}
+
       </div>
     </header>
   )
 }
+
