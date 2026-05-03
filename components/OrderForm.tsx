@@ -60,16 +60,13 @@ export default function OrderForm() {
     <div id="order-form" dir="rtl" className="w-full my-10 rounded-3xl overflow-hidden shadow-md border border-gray-100">
 
       {/* ✅ قسم البرومو */}
-      <div className="bg-[#2d5a27] text-white text-center px-8 py-8">
-        <span className="inline-block bg-white/20 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
+      <div className="bg-[#f0faf0] text-center px-8 py-8 border-b border-gray-100">
+        <span className="inline-block bg-[#2d5a27]/10 text-[#2d5a27] text-sm font-semibold px-4 py-1 rounded-full mb-4">
           ✦ عرض لفترة محدودة ✦
         </span>
-        <h3 className="text-2xl font-bold mb-2">احصلي عليه قبل نفاد الكمية</h3>
-        <p className="text-4xl font-extrabold text-[#d4f036] mb-4">1700 دج فقط</p>
-        <div className="flex flex-col items-center gap-2 text-base text-white/90">
-          <p>🚚 توصيل مجاني إلى أقرب مكتب Stop Desk</p>
-          <p>⬇ أدخلي بياناتك الآن لتأكيد طلبك</p>
-        </div>
+        <h3 className="text-2xl font-bold text-[#2d5a27] mb-2">احصلي عليه قبل نفاد الكمية</h3>
+        <p className="text-4xl font-extrabold text-[#2d5a27] mb-4">1700 دج فقط</p>
+        <p className="text-gray-500 text-base">⬇ أدخلي بياناتك الآن لتأكيد طلبك</p>
       </div>
 
       {/* ✅ الفورم */}
