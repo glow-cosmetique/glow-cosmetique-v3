@@ -23,7 +23,7 @@ export function StickyCTA() {
     <div className="fixed bottom-0 right-0 left-0 z-50 md:hidden px-4 py-3 bg-background border-t border-border shadow-lg">
       <button
         onClick={handleClick}
-        className="w-full bg-primary text-primary-foreground font-bold py-4 rounded-2xl text-base whitespace-nowrap active:scale-95 transition-transform"
+        className="w-full bg-primary text-primary-foreground font-bold py-5 rounded-2xl text-lg whitespace-nowrap active:scale-95 transition-transform"
       >
         إشتري الآن - الدفع عند الإستلام
       </button>
