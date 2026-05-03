@@ -45,6 +45,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 right-0 left-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
+      {/* ── شريط التوصيل العلوي ── */}
       <div className="bg-primary text-primary-foreground text-center py-2 px-4">
         <p className="text-xs sm:text-sm font-medium">
           توصيل مجاني للطلبات فوق 5000 دج - عرض محدود
@@ -54,8 +55,9 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-3 items-center h-16">
 
-          {/* العمود الأول — العبارات على اليمين */}
-          <div className="flex justify-start hidden md:flex overflow-hidden">
+          {/* العمود الأول — العبارات المتحركة (desktop فقط) */}
+          {/* ✅ الإصلاح: حذف "flex" الزائدة قبل "hidden md:flex" */}
+          <div className="hidden md:flex justify-start overflow-hidden">
             <span
               className="text-base font-bold text-foreground whitespace-nowrap"
               style={{ opacity: visible ? 1 : 0, transition: "opacity 0.4s ease" }}
@@ -64,14 +66,31 @@ export function Header() {
             </span>
           </div>
 
-          {/* العمود الثاني — منتجاتنا في الوسط */}
+          {/* على موبايل: اسم البراند في مكان العبارات */}
+          <div className="flex md:hidden justify-start">
+            <span className="text-sm font-bold text-foreground">
+              ✦ Glow
+            </span>
+          </div>
+
+          {/* العمود الثاني — nav (desktop فقط) */}
           <nav className="hidden md:flex justify-center items-center gap-8">
-            <a href="#products" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+            <a
+              href="#products"
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+            >
               منتجاتنا
             </a>
           </nav>
 
-          {/* العمود الثالث — الأزرار على اليسار */}
+          {/* على موبايل: اسم البراند في المنتصف */}
+          <div className="flex md:hidden justify-center">
+            <span className="text-base font-bold text-foreground">
+              Glow Cosmetique
+            </span>
+          </div>
+
+          {/* العمود الثالث — أزرار */}
           <div className="flex justify-end items-center gap-3">
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingBag className="h-5 w-5" />
@@ -82,6 +101,7 @@ export function Header() {
             <Button className="hidden sm:flex font-semibold">
               تسوقي الآن
             </Button>
+            {/* ✅ زر الهامبرغر — موبايل فقط */}
             <button
               className="md:hidden p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -91,13 +111,19 @@ export function Header() {
           </div>
         </div>
 
+        {/* ── القائمة المتنقلة ── */}
+        {/* ✅ الإصلاح: أضفنا bg-card ونصوص واضحة */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="md:hidden py-4 border-t border-border bg-card">
             <nav className="flex flex-col gap-4">
-              <a href="#products" className="text-muted-foreground hover:text-foreground transition-colors font-medium">
+              <a
+                href="#products"
+                className="text-foreground hover:text-primary transition-colors font-medium text-base"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 منتجاتنا
               </a>
-              <Button className="w-full font-semibold">
+              <Button className="w-full font-semibold" onClick={() => setMobileMenuOpen(false)}>
                 تسوقي الآن
               </Button>
             </nav>
