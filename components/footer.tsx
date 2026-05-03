@@ -24,9 +24,9 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-white font-bold text-lg">ن</span>
+                <span className="text-white font-bold text-lg">G</span>
               </div>
-              <span className="text-xl font-bold text-foreground">نضارة الجزائر</span>
+              <span className="text-xl font-bold text-foreground">Glow Cosmetique</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-sm">
               منتجات عناية بالبشرة طبيعية 100%، مصنوعة بحب في الجزائر لكل جزائرية تستحق بشرة مشرقة.
@@ -36,9 +36,9 @@ export function Footer() {
                 <Phone className="w-4 h-4" />
                 <span>0555 123 456</span>
               </a>
-              <a href="mailto:contact@nadara-dz.com" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <a href="mailto:contact@glow-cosmetique.com" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="w-4 h-4" />
-                <span>contact@nadara-dz.com</span>
+                <span>contact@glow-cosmetique.com</span>
               </a>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4" />
@@ -79,7 +79,7 @@ export function Footer() {
         {/* الأسفل */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} نضارة الجزائر. جميع الحقوق محفوظة.
+            &copy; {new Date().getFullYear()} Glow Cosmetique. جميع الحقوق محفوظة.
           </p>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground">طرق الدفع:</span>
