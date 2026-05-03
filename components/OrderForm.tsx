@@ -57,102 +57,120 @@ export default function OrderForm() {
   };
 
   return (
-    <div id="order-form" className="w-full p-10 bg-white rounded-3xl shadow-md border border-gray-100 my-10" dir="rtl">
-      <h2 className="text-center text-[#2d5a27] font-bold text-2xl mb-8">
-        املأ معلوماتك أسفله
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <input
-          name="fullname"
-          type="text"
-          required
-          className="w-full p-4 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#2d5a27] text-right text-lg"
-          placeholder="الاسم الكامل"
-        />
-        <input
-          name="phone"
-          type="tel"
-          required
-          className="w-full p-4 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#2d5a27] text-right text-lg"
-          placeholder="رقم الهاتف"
-        />
-        <div className="relative">
-          <div
-            className="w-full p-4 border border-gray-200 rounded-2xl bg-white cursor-pointer flex justify-between items-center text-lg"
-            onClick={() => {
-              setShowDropdown(!showDropdown);
-              setWilayaSearch("");
-              setTimeout(() => {
-                if (listRef.current) listRef.current.scrollTop = 0;
-              }, 10);
-            }}
-          >
-            <span className={selectedWilaya ? "text-black" : "text-gray-400"}>
-              {selectedWilaya || "الولاية"}
-            </span>
-            <span className="text-gray-400">▾</span>
-          </div>
-          {showDropdown && (
-            <div className="absolute z-50 w-full bg-white border border-gray-200 rounded-2xl shadow-lg mt-1 overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-100">
-                <span className="text-gray-400 text-sm">🔍</span>
-                <input
-                  type="text"
-                  placeholder="Search"
-                  value={wilayaSearch}
-                  onChange={(e) => {
-                    setWilayaSearch(e.target.value);
-                    if (listRef.current) listRef.current.scrollTop = 0;
-                  }}
-                  className="flex-1 bg-transparent outline-none text-sm text-left"
-                  autoFocus
-                  dir="ltr"
-                />
-              </div>
-              <div ref={listRef} className="max-h-60 overflow-y-auto">
-                {filtered.map((wilaya) => (
-                  <div
-                    key={wilaya}
-                    className="px-5 py-3 hover:bg-gray-50 cursor-pointer text-sm font-semibold border-b border-gray-100 last:border-0 text-left"
-                    dir="ltr"
-                    onClick={() => {
-                      setSelectedWilaya(wilaya);
-                      setShowDropdown(false);
-                      setWilayaSearch("");
-                    }}
-                  >
-                    {wilaya}
-                  </div>
-                ))}
-                {filtered.length === 0 && (
-                  <div className="px-5 py-4 text-gray-400 text-sm text-center">
-                    لا توجد نتائج
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
+    <div id="order-form" dir="rtl" className="w-full my-10 rounded-3xl overflow-hidden shadow-md border border-gray-100">
+
+      {/* ✅ قسم البرومو */}
+      <div className="bg-[#2d5a27] text-white text-center px-8 py-8">
+        <span className="inline-block bg-white/20 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
+          ✦ عرض لفترة محدودة ✦
+        </span>
+        <h3 className="text-2xl font-bold mb-2">احصلي عليه قبل نفاد الكمية</h3>
+        <p className="text-4xl font-extrabold text-[#d4f036] mb-4">1700 دج فقط</p>
+        <div className="flex flex-col items-center gap-2 text-base text-white/90">
+          <p>🚚 توصيل مجاني إلى أقرب مكتب Stop Desk</p>
+          <p>⬇ أدخلي بياناتك الآن لتأكيد طلبك</p>
         </div>
-        <input
-          name="baladia"
-          type="text"
-          className="w-full p-4 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#2d5a27] text-right text-lg"
-          placeholder="البلدية"
-        />
-        <input
-          name="address"
-          type="text"
-          className="w-full p-4 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#2d5a27] text-right text-lg"
-          placeholder="عنوان التوصيل"
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-[#d4f036] text-black font-bold py-5 rounded-2xl shadow-md active:scale-95 transition-all disabled:opacity-50 text-xl mt-2"
-        >
-          {loading ? "جاري الإرسال..." : "اضغط هنا للطلب"}
-        </button>
-      </form>
+      </div>
+
+      {/* ✅ الفورم */}
+      <div className="bg-white p-10">
+        <h2 className="text-center text-[#2d5a27] font-bold text-2xl mb-8">
+          املأ معلوماتك أسفله
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <input
+            name="fullname"
+            type="text"
+            required
+            className="w-full p-4 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#2d5a27] text-right text-lg"
+            placeholder="الاسم الكامل"
+          />
+          <input
+            name="phone"
+            type="tel"
+            required
+            className="w-full p-4 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#2d5a27] text-right text-lg"
+            placeholder="رقم الهاتف"
+          />
+          <div className="relative">
+            <div
+              className="w-full p-4 border border-gray-200 rounded-2xl bg-white cursor-pointer flex justify-between items-center text-lg"
+              onClick={() => {
+                setShowDropdown(!showDropdown);
+                setWilayaSearch("");
+                setTimeout(() => {
+                  if (listRef.current) listRef.current.scrollTop = 0;
+                }, 10);
+              }}
+            >
+              <span className={selectedWilaya ? "text-black" : "text-gray-400"}>
+                {selectedWilaya || "الولاية"}
+              </span>
+              <span className="text-gray-400">▾</span>
+            </div>
+            {showDropdown && (
+              <div className="absolute z-50 w-full bg-white border border-gray-200 rounded-2xl shadow-lg mt-1 overflow-hidden">
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-100">
+                  <span className="text-gray-400 text-sm">🔍</span>
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    value={wilayaSearch}
+                    onChange={(e) => {
+                      setWilayaSearch(e.target.value);
+                      if (listRef.current) listRef.current.scrollTop = 0;
+                    }}
+                    className="flex-1 bg-transparent outline-none text-sm text-left"
+                    autoFocus
+                    dir="ltr"
+                  />
+                </div>
+                <div ref={listRef} className="max-h-60 overflow-y-auto">
+                  {filtered.map((wilaya) => (
+                    <div
+                      key={wilaya}
+                      className="px-5 py-3 hover:bg-gray-50 cursor-pointer text-sm font-semibold border-b border-gray-100 last:border-0 text-left"
+                      dir="ltr"
+                      onClick={() => {
+                        setSelectedWilaya(wilaya);
+                        setShowDropdown(false);
+                        setWilayaSearch("");
+                      }}
+                    >
+                      {wilaya}
+                    </div>
+                  ))}
+                  {filtered.length === 0 && (
+                    <div className="px-5 py-4 text-gray-400 text-sm text-center">
+                      لا توجد نتائج
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+          <input
+            name="baladia"
+            type="text"
+            className="w-full p-4 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#2d5a27] text-right text-lg"
+            placeholder="البلدية"
+          />
+          <input
+            name="address"
+            type="text"
+            className="w-full p-4 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#2d5a27] text-right text-lg"
+            placeholder="عنوان التوصيل"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-[#d4f036] text-black font-bold py-5 rounded-2xl shadow-md active:scale-95 transition-all disabled:opacity-50 text-xl mt-2"
+          >
+            {loading ? "جاري الإرسال..." : "اضغط هنا للطلب"}
+          </button>
+        </form>
+      </div>
+
     </div>
   );
 }
