@@ -14,12 +14,14 @@ export default function LandingPage() {
     <div className="relative min-h-screen bg-background pb-24">
       <Header />
 
-      <main className="pt-28">
-        <Hero />
-        <Features />
-        <Products />
-        <MidCTA />
-        <Testimonials />
+     <Products />
+
+<section id="order-section">
+  <OrderForm />
+</section>
+
+<MidCTA />
+<Testimonials />
 
         <section id="order-section">
           <OrderForm />
