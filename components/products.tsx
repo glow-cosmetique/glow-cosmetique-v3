@@ -1,86 +1,15 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { ShoppingBag, Star } from "lucide-react"
+import { ShoppingBag, Star, CheckCircle } from "lucide-react"
+import { products } from "@/lib/products-data"
 
-const products = [
-  {
-    id: 1,
-    name: "كريم مرطب بزيت الأرغان",
-    description: "ترطيب عميق يدوم 24 ساعة",
-    price: 2500,
-    originalPrice: 3200,
-    rating: 4.9,
-    reviews: 156,
-    badge: "الأكثر مبيعاً",
-    color: "bg-rose-100",
-    image: "/products/product-1.jpg", // ← ضع اسم صورتك هنا لاحقاً
-  },
-  {
-    id: 2,
-    name: "سيروم فيتامين C",
-    description: "توحيد لون البشرة وإشراقها",
-    price: 3200,
-    originalPrice: 4000,
-    rating: 4.8,
-    reviews: 203,
-    badge: "جديد",
-    color: "bg-amber-100",
-    image: "/products/product-2.jpg",
-  },
-  {
-    id: 3,
-    name: "غسول وجه بالعسل الطبيعي",
-    description: "تنظيف عميق بدون جفاف",
-    price: 1800,
-    originalPrice: 2200,
-    rating: 4.7,
-    reviews: 89,
-    badge: null,
-    color: "bg-orange-100",
-    image: "/products/product-3.jpg",
-  },
-  {
-    id: 4,
-    name: "ماسك الطين المغربي",
-    description: "تنقية المسام وإزالة السموم",
-    price: 2800,
-    originalPrice: 3500,
-    rating: 4.9,
-    reviews: 178,
-    badge: "عرض خاص",
-    color: "bg-emerald-100",
-    image: "/product-4.jpg",
-  },
-  {
-    id: 5,
-    name: "زيت أرغان جزائري نقي",
-    description: "للوجه والشعر - عضوي 100%",
-    price: 3500,
-    originalPrice: 4200,
-    rating: 5.0,
-    reviews: 234,
-    badge: "الأفضل تقييماً",
-    color: "bg-yellow-100",
-    image: "/products/product-5.jpg",
-  },
-  {
-    id: 6,
-    name: "كريم مكافحة التصبغات",
-    description: "نتائج ملحوظة خلال أسبوعين",
-    price: 4200,
-    originalPrice: 5000,
-    rating: 4.8,
-    reviews: 145,
-    badge: null,
-    color: "bg-pink-100",
-    image: "/products/product-6.jpg",
-  },
-]
+// ← غيّر هذا الرقم لتغيير المنتج الظاهر (1 إلى 6)
+const FEATURED_PRODUCT_ID = 1
 
-// Placeholder SVG لما ما تكون الصورة موجودة
+// Placeholder SVG
 function ProductPlaceholder({ color }: { color: string }) {
   return (
     <div className={`absolute inset-0 flex flex-col items-center justify-center gap-3 ${color}`}>
@@ -104,82 +33,87 @@ function ProductPlaceholder({ color }: { color: string }) {
 }
 
 export function Products() {
+  const product = products.find((p) => p.id === FEATURED_PRODUCT_ID) ?? products[0]
+
   return (
     <section id="products" className="py-20 bg-card">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-5xl">
+
         {/* العنوان */}
         <div className="text-center mb-12">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            منتجاتنا المميزة
+            منتج اليوم
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 text-balance">
-            اختاري ما يناسب بشرتك
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">
+            اختيارنا لكِ هذا الأسبوع
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            كل منتجاتنا مصنوعة من مكونات طبيعية محلية، مثبتة علمياً وآمنة لكل أنواع البشرة
+            منتج طبيعي 100% مثبت علمياً وآمن لكل أنواع البشرة
           </p>
         </div>
 
-        {/* شبكة المنتجات */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product) => (
-            <Card
-              key={product.id}
-              className="group overflow-hidden border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
-            >
-              <div className={`relative aspect-square overflow-hidden ${product.color}`}>
+        {/* المنتج الواحد */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-background rounded-3xl shadow-md overflow-hidden border border-border/50">
 
-                {/* Placeholder دائماً موجود كخلفية */}
-                <ProductPlaceholder color={product.color} />
+          {/* صورة المنتج */}
+          <div className={`relative aspect-square overflow-hidden ${product.color}`}>
+            <ProductPlaceholder color={product.color} />
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-contain p-10"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none"
+              }}
+            />
+            {product.badge && (
+              <span className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full z-10">
+                {product.badge}
+              </span>
+            )}
+          </div>
 
-                {/* الصورة الحقيقية — لما تضيفها بتظهر فوق الـ placeholder */}
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  priority={product.id <= 3}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-contain p-6 group-hover:scale-105 transition-transform duration-300"
-                  onError={(e) => {
-                    // إخفاء الصورة لو ما وُجدت، يبقى الـ placeholder ظاهر
-                    (e.target as HTMLImageElement).style.display = "none"
-                  }}
-                />
+          {/* معلومات المنتج */}
+          <div className="p-8 space-y-5" dir="rtl">
+            <div className="flex items-center gap-2">
+              <Star className="w-5 h-5 fill-primary text-primary" />
+              <span className="font-semibold">{product.rating}</span>
+              <span className="text-muted-foreground text-sm">({product.reviews} تقييم)</span>
+            </div>
 
-                {/* Badge */}
-                {product.badge && (
-                  <span className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full z-10">
-                    {product.badge}
-                  </span>
-                )}
+            <h3 className="text-3xl font-bold">{product.name}</h3>
+            <p className="text-muted-foreground leading-relaxed">{product.description}</p>
 
-                {/* زر السلة عند hover */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-foreground/10 z-10">
-                  <Button className="shadow-lg font-semibold">
-                    <ShoppingBag className="w-4 h-4 ml-2" />
-                    أضيفي للسلة
-                  </Button>
-                </div>
-              </div>
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="text-3xl font-bold text-primary">{product.price} دج</span>
+              <span className="text-lg text-muted-foreground line-through">{product.originalPrice} دج</span>
+              <span className="bg-primary/10 text-primary text-sm font-semibold px-2 py-1 rounded-md">
+                وفري {product.originalPrice - product.price} دج
+              </span>
+            </div>
 
-              <CardContent className="p-5">
-                <div className="flex items-center gap-1 mb-2">
-                  <Star className="w-4 h-4 fill-primary text-primary" />
-                  <span className="text-sm font-medium">{product.rating}</span>
-                  <span className="text-xs text-muted-foreground">({product.reviews} تقييم)</span>
-                </div>
-                <h3 className="font-bold text-lg mb-1">{product.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl font-bold text-primary">{product.price} دج</span>
-                    <span className="text-sm text-muted-foreground line-through">{product.originalPrice} دج</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+              <span>توصيل لكل الولايات - الدفع عند الاستلام</span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button size="lg" className="flex-1 text-base font-semibold">
+                <ShoppingBag className="w-5 h-5 ml-2" />
+                أضيفي للسلة
+              </Button>
+              <Link href={`/product/${product.id}`} className="flex-1">
+                <Button size="lg" variant="outline" className="w-full text-base font-semibold">
+                  تفاصيل المنتج
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
   )
