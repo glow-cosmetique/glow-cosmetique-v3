@@ -10,7 +10,7 @@ export const products = [
     reviews: 156,
     badge: "الأكثر مبيعاً",
     color: "bg-rose-100",
-    image: "/products/product-1.jpg",
+   image: "/products/product-4.jpg",
     beforeAfterImage: "/results/result-1.jpg",
     results: "ترطيب ملحوظ خلال 3 أيام",
   },
