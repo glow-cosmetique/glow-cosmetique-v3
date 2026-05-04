@@ -52,7 +52,7 @@ const products = [
     reviews: 178,
     badge: "عرض خاص",
     color: "bg-emerald-100",
-    image: "/products/product-4.jpg",
+    image: "/product-4.jpg",
   },
   {
     id: 5,
@@ -184,5 +184,6 @@ export function Products() {
     </section>
   )
 }
+
 
 
