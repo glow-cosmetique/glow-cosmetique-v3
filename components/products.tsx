@@ -59,7 +59,7 @@ export function Products() {
           <div className={`relative aspect-square overflow-hidden ${product.color}`}>
             <ProductPlaceholder color={product.color} />
             <Image
-              src={product.image}
+              src="/products/product-1.jpg"
               alt={product.name}
               fill
               priority
