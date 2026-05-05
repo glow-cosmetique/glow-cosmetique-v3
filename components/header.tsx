@@ -44,10 +44,10 @@ export function Header() {
   }, [])
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 right-0 left-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
 
       {/* ── شريط التوصيل ── */}
-      <div className="bg-primary text-primary-foreground text-center py-2 px-4">
+      <div className="bg-[#263c2f] text-white text-center py-2 px-4">
         <p className="text-xs sm:text-sm font-medium">
           توصيل مجاني للطلبات فوق 5000 دج - عرض محدود
         </p>
@@ -83,13 +83,13 @@ export function Header() {
                 0
               </span>
             </Button>
-            <Button className="font-semibold">
-              تسوقي الآن
+            <Button asChild className="font-semibold text-black">
+              <a href="#order-section">تسوقي الآن</a>
             </Button>
           </div>
         </div>
 
-        {/* ══ MOBILE: عبارة متحركة في المنتصف ══ */}
+        {/* ══ MOBILE ══ */}
         <div className="flex md:hidden items-center justify-between h-16">
 
           {/* يمين: هامبرغر */}
@@ -130,8 +130,8 @@ export function Header() {
               >
                 منتجاتنا
               </a>
-              <Button className="w-full font-semibold" onClick={() => setMobileMenuOpen(false)}>
-                تسوقي الآن
+              <Button asChild className="w-full font-semibold text-black" onClick={() => setMobileMenuOpen(false)}>
+                <a href="#order-section">تسوقي الآن</a>
               </Button>
             </nav>
           </div>

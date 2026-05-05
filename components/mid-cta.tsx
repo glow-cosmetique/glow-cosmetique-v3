@@ -1,31 +1,60 @@
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { products } from "@/lib/products-data"
 
-// CTA ثاني بعد بناء الرغبة (بعد المنتجات)
+const FEATURED_PRODUCT_ID = 1
+
 export function MidCTA() {
+  const product = products.find((p) => p.id === FEATURED_PRODUCT_ID) ?? products[0]
+  const savings = product.originalPrice - product.price
+
   return (
-    <section className="py-16 bg-primary text-primary-foreground">
+    <section className="py-16 bg-[#f3f9e8] text-[#2d5a27] border-y border-[#e3edd0]">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-balance">
-          جاهزة لبشرة أجمل؟
+        <span className="inline-block bg-[#2d5a27]/10 text-[#2d5a27] text-sm font-extrabold px-4 py-1 rounded-full mb-4">
+          ✦ خصم اليوم ينتهي قريبًا ✦
+        </span>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2 text-balance">
+          احصلي على بشرة أنعم وإشراقة أوضح خلال أسابيع
         </h2>
-        <p className="text-primary-foreground/80 mb-8 max-w-lg mx-auto">
-          انضمي لأكثر من 10,000 زبونة جزائرية اختارت العناية الطبيعية
+        <p className="text-[#2d5a27]/80 mb-6 max-w-xl mx-auto">
+          تركيبة مناسبة للبشرة الجزائرية بنتائج ملحوظة مع الاستعمال المنتظم
+        </p>
+        <div className="mb-3">
+          <p className="text-lg md:text-xl text-[#2d5a27]/80 line-through">
+            {product.originalPrice} دج
+          </p>
+          <p className="text-4xl font-extrabold">
+            {product.price} دج فقط
+          </p>
+          <p className="text-sm font-bold text-[#2d5a27]/85 mt-1">
+            توفري اليوم {savings} دج
+          </p>
+        </div>
+        <p className="text-sm md:text-base text-[#2d5a27]/80 mb-7">
+          ⭐ {product.rating} / 5 من {product.reviews}+ مراجعة حقيقية
         </p>
 
-        {/* ✅ الإصلاح: w-full على موبايل + sm:w-auto على desktop */}
         <Button
+          asChild
           size="lg"
-          variant="secondary"
-          className="w-full sm:w-auto text-base sm:text-lg px-8 py-4 h-auto font-bold whitespace-nowrap"
+          variant="default"
+          className="w-full sm:w-auto text-base sm:text-lg px-10 py-4 h-auto whitespace-nowrap lp-cta"
         >
-          إشتري الآن - الدفع عند الإستلام
-          <ArrowLeft className="mr-2 h-5 w-5" />
+          <a href="#order-section">
+            اطلبي الآن واستفيدي من السعر المخفض
+            <ArrowLeft className="mr-2 h-5 w-5" />
+          </a>
         </Button>
 
-        <p className="text-sm text-primary-foreground/60 mt-4">
-          العرض ينتهي قريباً - الكمية محدودة
-        </p>
+        <div className="mt-4 space-y-1">
+          <p className="text-sm text-[#2d5a27]/75">
+            دفع عند الاستلام - شحن سريع لجميع الولايات
+          </p>
+          <p className="text-xs text-[#2d5a27]/65">
+            ضمان جودة المنتج قبل الاستلام - الكمية محدودة
+          </p>
+        </div>
       </div>
     </section>
   )

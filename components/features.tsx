@@ -32,7 +32,7 @@ const features = [
 
 export function Features() {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-[#fafcf5]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold tracking-tight mb-4 text-foreground">
@@ -50,9 +50,9 @@ export function Features() {
             return (
               <div
                 key={index}
-                className="group bg-card p-8 rounded-3xl border border-border hover:border-primary/50 hover:shadow-xl transition-all duration-300 flex flex-col"
+                className="group lp-card p-8 hover:border-[#dce9bc] flex flex-col"
               >
-                <div className="mb-6 w-16 h-16 flex items-center justify-center bg-primary/10 rounded-2xl group-hover:bg-primary/20 transition-colors">
+                <div className="mb-6 w-16 h-16 flex items-center justify-center bg-[#f1f7df] rounded-2xl group-hover:bg-[#e9f2ce] transition-colors">
                   <Icon className="w-8 h-8 text-primary" />
                 </div>
 

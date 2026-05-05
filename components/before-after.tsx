@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Sparkles } from "lucide-react"
 
@@ -10,7 +11,9 @@ const transformations = [
     afterLabel: "بعد 4 أسابيع",
     issue: "حبوب وبقع داكنة",
     result: "بشرة صافية ومشرقة",
-    product: "سيروم فيتامين C + كريم التصبغات"
+    product: "سيروم فيتامين C + كريم التصبغات",
+    beforeImage: "/results/before-1.jpg",
+    afterImage: "/results/after-1.jpg",
   },
   {
     id: 2,
@@ -18,7 +21,9 @@ const transformations = [
     afterLabel: "بعد 3 أسابيع",
     issue: "جفاف شديد وتشققات",
     result: "ترطيب عميق ونعومة",
-    product: "كريم الأرغان المرطب"
+    product: "كريم الأرغان المرطب",
+    beforeImage: "/results/before-2.jpg",
+    afterImage: "/results/after-2.jpg",
   },
   {
     id: 3,
@@ -26,13 +31,35 @@ const transformations = [
     afterLabel: "بعد 2 أسبوع",
     issue: "مسام واسعة ودهون زائدة",
     result: "مسام مغلقة وبشرة نظيفة",
-    product: "ماسك الطين المغربي"
-  }
+    product: "ماسك الطين المغربي",
+    beforeImage: "/results/before-3.jpg",
+    afterImage: "/results/after-3.jpg",
+  },
+  {
+    id: 4,
+    beforeLabel: "قبل",
+    afterLabel: "بعد 5 أسابيع",
+    issue: "تصبغات غير موحدة",
+    result: "لون بشرة أكثر تجانسًا",
+    product: "كريم مكافحة التصبغات",
+    beforeImage: "/results/before-4.jpg",
+    afterImage: "/results/after-4.jpg",
+  },
+  {
+    id: 5,
+    beforeLabel: "قبل",
+    afterLabel: "بعد 3 أسابيع",
+    issue: "بهتان وفقدان إشراق",
+    result: "نضارة ولمعان طبيعي",
+    product: "سيروم فيتامين C",
+    beforeImage: "/results/before-5.jpg",
+    afterImage: "/results/after-5.jpg",
+  },
 ]
 
 export function BeforeAfter() {
   return (
-    <section id="results" className="py-20 bg-gradient-to-b from-background to-secondary/20">
+    <section id="results" className="py-20 bg-[#fafcf5]">
       <div className="container mx-auto px-4">
         {/* العنوان */}
         <div className="text-center mb-12">
@@ -49,18 +76,24 @@ export function BeforeAfter() {
         </div>
 
         {/* بطاقات قبل وبعد */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
           {transformations.map((item) => (
-            <div key={item.id} className="bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-lg transition-shadow">
+            <div key={item.id} className="lp-card overflow-hidden">
               {/* صور قبل وبعد */}
               <div className="grid grid-cols-2">
                 {/* قبل */}
-                <div className="relative aspect-square bg-rose-100/50">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-rose-200/80 flex items-center justify-center">
-                      <span className="text-2xl">😔</span>
-                    </div>
-                  </div>
+                <div className="relative h-[420px] sm:h-[540px] md:h-[680px] bg-[#f9f1f1]">
+                  <Image
+                    src={item.beforeImage}
+                    alt={`نتيجة قبل - ${item.issue}`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover"
+                    onError={(e) => {
+                      ;(e.target as HTMLImageElement).style.display = "none"
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center text-2xl">😔</div>
                   <span className="absolute top-3 right-3 bg-foreground/80 text-background text-xs font-bold px-3 py-1 rounded-full">
                     {item.beforeLabel}
                   </span>
@@ -69,12 +102,18 @@ export function BeforeAfter() {
                   </p>
                 </div>
                 {/* بعد */}
-                <div className="relative aspect-square bg-accent/30">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-accent/50 flex items-center justify-center">
-                      <span className="text-2xl">✨</span>
-                    </div>
-                  </div>
+                <div className="relative h-[420px] sm:h-[540px] md:h-[680px] bg-[#eef7da]">
+                  <Image
+                    src={item.afterImage}
+                    alt={`نتيجة بعد - ${item.result}`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover"
+                    onError={(e) => {
+                      ;(e.target as HTMLImageElement).style.display = "none"
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center text-2xl">✨</div>
                   <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
                     {item.afterLabel}
                   </span>
@@ -87,9 +126,11 @@ export function BeforeAfter() {
               <div className="p-5 text-center">
                 <p className="text-sm text-muted-foreground mb-3">المنتج المستخدم:</p>
                 <p className="font-bold text-foreground">{item.product}</p>
-                <Button className="mt-4 w-full" variant="outline">
-                  اكتشفي المنتج
-                  <ArrowLeft className="mr-2 h-4 w-4" />
+                <Button asChild className="mt-4 w-full lp-cta">
+                  <a href="#order-section">
+                    اطلبي نفس الروتين
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                  </a>
                 </Button>
               </div>
             </div>
@@ -98,9 +139,11 @@ export function BeforeAfter() {
 
         {/* CTA */}
         <div className="text-center">
-          <Button size="lg" className="text-lg px-10 py-6 h-auto font-bold shadow-lg shadow-primary/30">
-            شوفي كل النتائج
-            <ArrowLeft className="mr-2 h-5 w-5" />
+          <Button asChild size="lg" className="text-lg px-10 py-6 h-auto lp-cta">
+            <a href="#order-section">
+              اطلبي الآن وشوفي النتيجة بنفسك
+              <ArrowLeft className="mr-2 h-5 w-5" />
+            </a>
           </Button>
         </div>
       </div>

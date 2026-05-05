@@ -17,14 +17,14 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-[#f8fbef] border-t border-[#e3edd0]">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* معلومات العلامة */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-white font-bold text-lg">G</span>
+              <div className="w-10 h-10 rounded-full bg-[#d4f036] flex items-center justify-center border border-[#c7df3a]">
+                <span className="text-[#22352a] font-bold text-lg">G</span>
               </div>
               <span className="text-xl font-bold text-foreground">Glow Cosmetique</span>
             </div>
@@ -77,16 +77,16 @@ export function Footer() {
         </div>
 
         {/* الأسفل */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-[#e3edd0]">
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Glow Cosmetique. جميع الحقوق محفوظة.
           </p>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground">طرق الدفع:</span>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-1 bg-secondary rounded text-xs font-medium">الدفع عند الاستلام</span>
-              <span className="px-2 py-1 bg-secondary rounded text-xs font-medium">CCP</span>
-              <span className="px-2 py-1 bg-secondary rounded text-xs font-medium">Baridimob</span>
+              <span className="px-2 py-1 bg-white border border-[#dfe7d0] rounded text-xs font-medium">الدفع عند الاستلام</span>
+              <span className="px-2 py-1 bg-white border border-[#dfe7d0] rounded text-xs font-medium">CCP</span>
+              <span className="px-2 py-1 bg-white border border-[#dfe7d0] rounded text-xs font-medium">Baridimob</span>
             </div>
           </div>
         </div>

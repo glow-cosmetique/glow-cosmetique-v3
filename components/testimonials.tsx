@@ -2,80 +2,42 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
 
 const testimonials = [
-  {
-    id: 1,
-    content: "بشرتي صارت ناعمة ومشرقة بعد أسبوعين فقط! كنت أعاني من جفاف شديد خاصة في الشتاء، والآن بشرتي رطبة طول اليوم.",
-    author: "سارة بن عمر",
-    location: "الجزائر العاصمة",
-    rating: 5,
-    avatar: "س"
-  },
-  {
-    id: 2,
-    content: "منتجات طبيعية ورخيصة مقارنة بالماركات الأجنبية. السيروم غير حياتي! التصبغات بدأت تخف بشكل واضح.",
-    author: "أمينة بوزيد",
-    location: "وهران",
-    rating: 5,
-    avatar: "أ"
-  },
-  {
-    id: 3,
-    content: "أخيراً لقيت منتجات تفهم بشرتنا الجزائرية! الماسك الطيني ممتاز للمسام الواسعة. أنصح كل البنات بتجربته.",
-    author: "نور الهدى",
-    location: "قسنطينة",
-    rating: 5,
-    avatar: "ن"
-  },
-  {
-    id: 4,
-    content: "التوصيل كان سريع جداً لعنابة، والتغليف راقي. زيت الأرغان أصلي 100% وريحته طبيعية. راح أطلب مرة ثانية.",
-    author: "ياسمين شريف",
-    location: "عنابة",
-    rating: 5,
-    avatar: "ي"
-  }
+  { id: 1, content: "بشرتي صارت ناعمة ومشرقة بعد أسبوعين فقط!", author: "سارة بن عمر", location: "الجزائر العاصمة", rating: 5, avatar: "س" },
+  { id: 2, content: "السيروم فرق معي كثير والتصبغات بدأت تخف.", author: "أمينة بوزيد", location: "وهران", rating: 5, avatar: "أ" },
+  { id: 3, content: "منتجات مناسبة فعلاً لبشرتنا والمناخ الجاف.", author: "نور الهدى", location: "قسنطينة", rating: 5, avatar: "ن" },
 ]
 
 export function Testimonials() {
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-20 bg-[#fafcf5]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            شهادات زبوناتنا
-          </span>
+        <div className="text-center mb-10">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">آراء الزبونات</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 text-balance">
-            آراء حقيقية من جزائريات مثلك
+            نتائج حقيقية من جزائريات مثلك
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            أكثر من 10,000 زبونة سعيدة في كل الولايات
-          </p>
+          <p className="text-muted-foreground max-w-xl mx-auto">+10,000 زبونة سعيدة في مختلف الولايات</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="bg-card border-border/50">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {testimonials.map((t) => (
+            <Card key={t.id} className="lp-card">
               <CardContent className="p-6">
-                {/* النجوم */}
                 <div className="flex gap-1 mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  {Array.from({ length: t.rating }).map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                   ))}
                 </div>
 
-                {/* الاقتباس */}
-                <p className="text-foreground leading-relaxed mb-6">
-                  &ldquo;{testimonial.content}&rdquo;
-                </p>
+                <p className="text-foreground leading-relaxed mb-6">&ldquo;{t.content}&rdquo;</p>
 
-                {/* معلومات الكاتبة */}
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="font-bold text-primary">{testimonial.avatar}</span>
+                    <span className="font-bold text-primary">{t.avatar}</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                    <p className="font-semibold text-foreground">{t.author}</p>
+                    <p className="text-sm text-muted-foreground">{t.location}</p>
                   </div>
                 </div>
               </CardContent>
