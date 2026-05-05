@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react';
 import { supabase } from '@/lib/supabase'; 
 import { products } from "@/lib/products-data"
+import { useRouter, useSearchParams } from "next/navigation";
 
 const FEATURED_PRODUCT_ID = 1
 
@@ -12,7 +13,13 @@ export default function OrderForm() {
   const [selectedWilaya, setSelectedWilaya] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
-  const product = products.find((p) => p.id === FEATURED_PRODUCT_ID) ?? products[0]
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const upsellParam = Number(searchParams.get("upsell"));
+  const product =
+    products.find((p) => p.id === upsellParam) ??
+    products.find((p) => p.id === FEATURED_PRODUCT_ID) ??
+    products[0]
 
   const wilayas = [
     "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna",
@@ -52,10 +59,10 @@ export default function OrderForm() {
     if (error) {
       alert("خطأ: " + error.message);
     } else {
-      alert("تم استلام طلبك بنجاح! شكراً لثقتك في Glow Cosmetique");
       (e.target as HTMLFormElement).reset();
       setSelectedWilaya("");
       setWilayaSearch("");
+      router.replace("/thank-you");
     }
     setLoading(false);
   };
@@ -71,6 +78,9 @@ export default function OrderForm() {
         <h3 className="text-2xl font-bold text-[#2d5a27] mb-2">{product.name}</h3>
         <p className="text-4xl font-extrabold text-[#2d5a27] mb-2">{product.price} دج فقط</p>
         <p className="text-sm text-[#2d5a27]/80">بدل {product.originalPrice} دج - الدفع عند الاستلام</p>
+        {searchParams.get("upsell") && (
+          <p className="text-xs text-[#2d5a27]/70 mt-2">تم تفعيل عرض إضافي خاص على هذا المنتج</p>
+        )}
         
       </div>
 

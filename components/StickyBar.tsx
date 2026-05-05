@@ -1,13 +1,17 @@
 "use client";
 
+import { useState } from "react";
+import { ShoppingCart } from "lucide-react";
 import { products } from "@/lib/products-data";
 
 const FEATURED_PRODUCT_ID = 1;
 
 export function StickyBar() {
   const product = products.find((p) => p.id === FEATURED_PRODUCT_ID) ?? products[0];
+  const [cartCount, setCartCount] = useState(0);
 
-  const scrollToForm = () => {
+  const addFirstItemAndScroll = () => {
+    setCartCount((prev) => prev + 1);
     document.getElementById("order-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -15,9 +19,17 @@ export function StickyBar() {
     <>
       <div className="fixed bottom-0 left-0 w-full z-50 md:hidden p-4 bg-white border-t border-[#e5ecd8] shadow-lg">
         <button
-          onClick={scrollToForm}
-            className="w-full bg-[#d4f036] py-4 rounded-2xl text-base whitespace-nowrap lp-cta"
+          onClick={addFirstItemAndScroll}
+          className="w-full bg-[#d4f036] py-4 rounded-2xl text-base whitespace-nowrap lp-cta flex items-center justify-center gap-2"
         >
+          <span className="relative inline-flex items-center justify-center">
+            <ShoppingCart className="h-5 w-5" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -left-2 min-w-5 h-5 px-1 rounded-full bg-black text-white text-[11px] leading-5 font-bold">
+                {cartCount}
+              </span>
+            )}
+          </span>
           اطلبي الآن - الدفع عند الاستلام
         </button>
       </div>
@@ -31,9 +43,17 @@ export function StickyBar() {
           <div className="flex items-center gap-6">
             <p className="text-[#2d5a27] font-bold text-lg">{product.price} دج</p>
             <button
-              onClick={scrollToForm}
-              className="bg-[#d4f036] py-3 px-8 rounded-xl lp-cta"
+              onClick={addFirstItemAndScroll}
+              className="bg-[#d4f036] py-3 px-8 rounded-xl lp-cta flex items-center gap-2"
             >
+              <span className="relative inline-flex items-center justify-center">
+                <ShoppingCart className="h-5 w-5" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -left-2 min-w-5 h-5 px-1 rounded-full bg-black text-white text-[11px] leading-5 font-bold">
+                    {cartCount}
+                  </span>
+                )}
+              </span>
               اطلبي الآن - الدفع عند الاستلام
             </button>
           </div>

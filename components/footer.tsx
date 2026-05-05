@@ -1,17 +1,18 @@
-import { Phone, Mail, MapPin } from "lucide-react"
+import Link from "next/link"
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 
 const footerLinks = {
   products: [
-    { label: "كريمات مرطبة", href: "#" },
-    { label: "سيروم ومصلات", href: "#" },
-    { label: "غسولات الوجه", href: "#" },
-    { label: "زيوت طبيعية", href: "#" }
+    { label: "كريمات مرطبة", href: "/#products" },
+    { label: "سيروم ومصلات", href: "/#products" },
+    { label: "غسولات الوجه", href: "/#products" },
+    { label: "زيوت طبيعية", href: "/#products" }
   ],
   support: [
-    { label: "اتصلي بنا", href: "#" },
-    { label: "الأسئلة الشائعة", href: "#" },
-    { label: "سياسة الشحن", href: "#" },
-    { label: "سياسة الإرجاع", href: "#" }
+    { label: "اتصلي بنا", href: "tel:0662559416", external: true },
+    { label: "راسلينا عبر البريد", href: "mailto:glwocosmitique@gmail.com", external: true },
+    { label: "سياسة الشحن", href: "/shipping-policy" },
+    { label: "سياسة الإرجاع", href: "/return-policy" }
   ]
 }
 
@@ -32,13 +33,22 @@ export function Footer() {
               منتجات عناية بالبشرة طبيعية 100%، مصنوعة بحب في الجزائر لكل جزائرية تستحق بشرة مشرقة.
             </p>
             <div className="flex flex-col gap-3">
-              <a href="tel:+213555123456" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <a href="tel:0662559416" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                 <Phone className="w-4 h-4" />
-                <span>0555 123 456</span>
+                <span>0662559416</span>
               </a>
-              <a href="mailto:contact@glow-cosmetique.com" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <a href="mailto:glwocosmitique@gmail.com" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="w-4 h-4" />
-                <span>contact@glow-cosmetique.com</span>
+                <span>glwocosmitique@gmail.com</span>
+              </a>
+              <a
+                href="https://wa.me/213662559416"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-[#dfe7d0] bg-white px-4 py-2 text-sm font-semibold text-[#1f4d1f] hover:bg-[#f3f9e8] transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp</span>
               </a>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4" />
@@ -53,9 +63,9 @@ export function Footer() {
             <ul className="flex flex-col gap-3">
               {footerLinks.products.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href={link.href} className="text-muted-foreground hover:text-foreground transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -67,9 +77,15 @@ export function Footer() {
             <ul className="flex flex-col gap-3">
               {footerLinks.support.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-muted-foreground hover:text-foreground transition-colors">
-                    {link.label}
-                  </a>
+                  {link.external ? (
+                    <a href={link.href} className="text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className="text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
