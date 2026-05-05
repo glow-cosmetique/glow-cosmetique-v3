@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, Suspense } from 'react';
 import { supabase } from '@/lib/supabase'; 
 import { products } from "@/lib/products-data"
 import { useRouter, useSearchParams } from "next/navigation";
 
 const FEATURED_PRODUCT_ID = 1
 
-export default function OrderForm() {
+function OrderFormContent() {
   const [loading, setLoading] = useState(false);
   const [wilayaSearch, setWilayaSearch] = useState("");
   const [selectedWilaya, setSelectedWilaya] = useState("");
@@ -81,7 +81,6 @@ export default function OrderForm() {
         {searchParams.get("upsell") && (
           <p className="text-xs text-[#2d5a27]/70 mt-2">تم تفعيل عرض إضافي خاص على هذا المنتج</p>
         )}
-        
       </div>
 
       {/* ✅ الفورم */}
@@ -195,5 +194,13 @@ export default function OrderForm() {
       </div>
 
     </div>
+  );
+}
+
+export default function OrderForm() {
+  return (
+    <Suspense fallback={<div>loading...</div>}>
+      <OrderFormContent />
+    </Suspense>
   );
 }
