@@ -15,6 +15,7 @@ const FEATURED_PRODUCT_ID = 1;
 export function StickyBar() {
   const product = products.find((p) => p.id === FEATURED_PRODUCT_ID) ?? products[0];
   const [recordedOrderCount, setRecordedOrderCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     setRecordedOrderCount(getRecordedOrderCount());
@@ -42,9 +43,41 @@ export function StickyBar() {
     };
   }, []);
 
+  useEffect(() => {
+    const updateVisibility = () => {
+      const targets = ["#results", "#products"]
+        .map((selector) => document.querySelector<HTMLElement>(selector))
+        .filter((el): el is HTMLElement => Boolean(el));
+
+      if (targets.length === 0) {
+        setIsVisible(false);
+        return;
+      }
+
+      const viewportHeight = window.innerHeight;
+      const visibleInTarget = targets.some((el) => {
+        const rect = el.getBoundingClientRect();
+        return rect.top < viewportHeight * 0.7 && rect.bottom > 120;
+      });
+
+      setIsVisible(visibleInTarget);
+    };
+
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("resize", updateVisibility);
+    };
+  }, []);
+
   const scrollToOrderForm = () => {
     document.getElementById("order-form")?.scrollIntoView({ behavior: "smooth" });
   };
+
+  if (!isVisible) return null;
 
   return (
     <>

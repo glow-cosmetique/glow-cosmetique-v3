@@ -17,8 +17,8 @@ export default function LandingPage() {
       <main className="pt-28">
         <Hero />
         <Features />
-        <Products />
         <BeforeAfter />
+        <Products />
         <Testimonials />
         <MidCTA />
 

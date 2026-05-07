@@ -24,9 +24,9 @@ export function Products() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">منتج الأسبوع</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">اختيارنا لكِ</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">اختيارنا الخاص لك هذا الأسبوع</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            تركيبة طبيعية فعالة، مناسبة لكل أنواع البشرة
+            تركيبة غنية وفاخرة
           </p>
         </div>
 
@@ -54,19 +54,47 @@ export function Products() {
             </div>
 
             <h3 className="text-3xl font-bold">{product.name}</h3>
-            <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+            <p className="text-muted-foreground leading-relaxed">
+              مصنوعة بزيت الأرغان الجزائري الأصيل + خلاصة التمر والزيتون
+            </p>
+
+            <div className="space-y-2">
+              <p className="font-bold text-foreground">فوائده:</p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>ترطيب عميق لمدة 24 ساعة</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>تنعيم وتلطيف البشرة</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>تقليل الجفاف والتشققات</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>إعطاء نضارة وإشراق طبيعي</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>مناسب لكل أنواع البشرة (حتى الحساسة)</span>
+                </li>
+              </ul>
+            </div>
 
             <div className="flex items-center gap-3 flex-wrap">
               <span className="text-3xl font-bold text-[var(--card-price)]">{product.price} دج</span>
               <span className="text-lg text-[var(--card-lbl)] line-through">{product.originalPrice} دج</span>
               <span className="text-sm font-semibold px-2 py-1 rounded-md bg-[var(--badge-bg)] text-[var(--discount)]">
-                وفرّي {product.originalPrice - product.price} دج
+                (توفر {product.originalPrice - product.price} دج)
               </span>
             </div>
 
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-              <span>توصيل لكل الولايات - الدفع عند الاستلام</span>
+              <span>عرض خاص لهذا الأسبوع فقط</span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
