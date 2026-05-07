@@ -9,6 +9,7 @@ const testimonials = [
     location: "الجزائر العاصمة",
     rating: 5,
     avatar: "س",
+    avatarBg: "#F8E4DE",
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ const testimonials = [
     location: "وهران",
     rating: 5,
     avatar: "أ",
+    avatarBg: "#FCEBD9",
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const testimonials = [
     location: "قسنطينة",
     rating: 5,
     avatar: "ن",
+    avatarBg: "#F3E3F2",
   },
   {
     id: 4,
@@ -33,6 +36,7 @@ const testimonials = [
     location: "سطيف",
     rating: 5,
     avatar: "ر",
+    avatarBg: "#FEE3E3",
   },
   {
     id: 5,
@@ -41,6 +45,7 @@ const testimonials = [
     location: "تلمسان",
     rating: 5,
     avatar: "خ",
+    avatarBg: "#F6EBD8",
   },
   {
     id: 6,
@@ -49,6 +54,7 @@ const testimonials = [
     location: "عنابة",
     rating: 5,
     avatar: "إ",
+    avatarBg: "#F5DFE7",
   },
 ]
 
@@ -84,8 +90,11 @@ export function Testimonials() {
                 <p className="text-foreground leading-relaxed mb-6">&ldquo;{t.content}&rdquo;</p>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#F2D8D0] border border-[#E9C97A]/60 flex items-center justify-center">
-                    <span className="font-bold text-[#6A2818]">{t.avatar}</span>
+                  <div
+                    className="w-12 h-12 rounded-full border-2 border-[#E9C97A]/70 flex items-center justify-center shadow-sm"
+                    style={{ backgroundColor: t.avatarBg }}
+                  >
+                    <span className="text-base font-extrabold text-[#6A2818]">{t.avatar}</span>
                   </div>
                   <div>
                     <p className="font-semibold text-foreground">{t.author}</p>
