@@ -3,58 +3,80 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Glow LP - clean conversion-focused palette */
+/* Nude Blush palette */
 :root {
-  --background: oklch(0.995 0 0);
-  --foreground: oklch(0.23 0.02 150);
+  --announce-bg: #8B4A42;
+  --announce-txt: #FFF0EC;
+  --nav-bg: #FFFAF9;
+  --nav-txt: #2C1410;
+  --hero-bg: #F9EDE8;
+  --hero-title: #4A1810;
+  --hero-sub: #8B4840;
+  --badge-bg: #F2D8D0;
+  --badge-txt: #6A2818;
+  --btn-bg: #8B4A42;
+  --btn-txt: #FFFFFF;
+  --section-bg: #FDF5F2;
+  --card-bg: #FFFFFF;
+  --card-price: #8B4A42;
+  --card-label: #9A6858;
+  --card-lbl: var(--card-label);
+  --card-border: #EDD0C4;
+  --footer-bg: #2C1410;
+  --footer-txt: #F2D8D0;
+  --discount: #CC2020;
+  --star: #D49010;
+
+  --background: var(--section-bg);
+  --foreground: var(--nav-txt);
   
-  /* كارد أبيض نقي */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0.02 350);
+  --card: var(--card-bg);
+  --card-foreground: var(--nav-txt);
   
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.02 350);
+  --popover: var(--card-bg);
+  --popover-foreground: var(--nav-txt);
   
-  /* lime CTA + dark text */
-  --primary: oklch(0.91 0.17 114);
-  --primary-foreground: oklch(0.20 0.02 145);
+  --primary: var(--btn-bg);
+  --primary-foreground: var(--btn-txt);
   
-  --secondary: oklch(0.97 0.02 140);
-  --secondary-foreground: oklch(0.28 0.03 145);
+  --secondary: var(--hero-bg);
+  --secondary-foreground: var(--hero-sub);
   
-  --muted: oklch(0.97 0.01 140);
-  --muted-foreground: oklch(0.45 0.02 145);
+  --muted: var(--section-bg);
+  --muted-foreground: var(--card-lbl);
   
-  --accent: oklch(0.95 0.04 128);
-  --accent-foreground: oklch(0.30 0.05 145);
+  --accent: var(--badge-bg);
+  --accent-foreground: var(--badge-txt);
+  --accent-soft: color-mix(in srgb, var(--badge-bg) 50%, white);
+  --accent-strong: var(--btn-bg);
   
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   
-  --border: oklch(0.90 0.01 145);
-  --input: oklch(0.98 0.005 140);
-  --ring: oklch(0.91 0.17 114);
+  --border: var(--card-border);
+  --input: #fffdfb;
+  --ring: var(--btn-bg);
   
-  --chart-1: oklch(0.91 0.17 114);
-  --chart-2: oklch(0.85 0.1 145);
-  --chart-3: oklch(0.85 0.08 350);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --chart-1: var(--btn-bg);
+  --chart-2: var(--badge-bg);
+  --chart-3: var(--hero-title);
+  --chart-4: var(--section-bg);
+  --chart-5: var(--card-lbl);
   
   --radius: 1rem;
   
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.75 0.15 75);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: var(--nav-bg);
+  --sidebar-foreground: var(--nav-txt);
+  --sidebar-primary: var(--btn-bg);
+  --sidebar-primary-foreground: var(--btn-txt);
+  --sidebar-accent: var(--badge-bg);
+  --sidebar-accent-foreground: var(--badge-txt);
+  --sidebar-border: var(--card-border);
+  --sidebar-ring: var(--btn-bg);
 }
 
 @theme inline {
-  --font-sans: 'Cairo', 'Cairo Fallback', sans-serif;
+  --font-sans: var(--font-tajawal), 'Tajawal', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -102,7 +124,8 @@
     @apply bg-background text-foreground;
   }
 
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-alexandria), 'Alexandria', sans-serif;
     letter-spacing: -0.01em;
   }
 }
@@ -113,6 +136,59 @@
   }
 
   .lp-cta {
-    @apply font-extrabold text-black shadow-sm transition-all duration-200 hover:brightness-95 active:scale-[0.99];
+    background-color: #8B3A2A;
+    color: #FFFFFF;
+    @apply font-extrabold shadow-sm transition-all duration-200 active:scale-[0.99];
+  }
+
+  .lp-cta:hover {
+    background-color: var(--accent-strong);
+  }
+
+  .lp-cta,
+  .lp-cta * {
+    color: #FFFFFF;
+  }
+
+  @media (max-width: 768px) {
+    .lp-cta {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+  }
+
+  .lp-accent-soft {
+    background-color: var(--accent-soft);
+  }
+
+  .lp-accent-text {
+    color: var(--accent-strong);
+  }
+
+  .lp-announce {
+    background-color: var(--announce-bg);
+    color: var(--announce-txt);
+  }
+
+  .lp-nav {
+    background-color: color-mix(in srgb, var(--nav-bg) 95%, transparent);
+    color: var(--nav-txt);
+  }
+
+  .lp-hero {
+    background-color: var(--hero-bg);
+  }
+
+  .lp-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-txt);
+  }
+
+  .lp-discount {
+    color: var(--discount);
+  }
+
+  .lp-star {
+    color: var(--star);
   }
 }

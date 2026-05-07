@@ -9,29 +9,29 @@ export function MidCTA() {
   const savings = product.originalPrice - product.price
 
   return (
-    <section className="py-16 bg-[#f3f9e8] text-[#2d5a27] border-y border-[#e3edd0]">
+    <section className="py-16 bg-secondary text-foreground border-y border-border">
       <div className="container mx-auto px-4 text-center">
-        <span className="inline-block bg-[#2d5a27]/10 text-[#2d5a27] text-sm font-extrabold px-4 py-1 rounded-full mb-4">
+        <span className="inline-block bg-accent/15 lp-accent-text text-sm font-extrabold px-4 py-1 rounded-full mb-4">
           ✦ خصم اليوم ينتهي قريبًا ✦
         </span>
         <h2 className="text-2xl md:text-3xl font-bold mb-2 text-balance">
           احصلي على بشرة أنعم وإشراقة أوضح خلال أسابيع
         </h2>
-        <p className="text-[#2d5a27]/80 mb-6 max-w-xl mx-auto">
+        <p className="text-foreground/80 mb-6 max-w-xl mx-auto">
           تركيبة مناسبة للبشرة الجزائرية بنتائج ملحوظة مع الاستعمال المنتظم
         </p>
         <div className="mb-3">
-          <p className="text-lg md:text-xl text-[#2d5a27]/80 line-through">
+          <p className="text-lg md:text-xl text-foreground/65 line-through">
             {product.originalPrice} دج
           </p>
-          <p className="text-4xl font-extrabold">
+          <p className="text-4xl font-extrabold lp-accent-text">
             {product.price} دج فقط
           </p>
-          <p className="text-sm font-bold text-[#2d5a27]/85 mt-1">
+          <p className="text-sm font-bold lp-accent-text mt-1">
             توفري اليوم {savings} دج
           </p>
         </div>
-        <p className="text-sm md:text-base text-[#2d5a27]/80 mb-7">
+        <p className="text-sm md:text-base text-foreground/80 mb-7">
           ⭐ {product.rating} / 5 من {product.reviews}+ مراجعة حقيقية
         </p>
 
@@ -48,10 +48,10 @@ export function MidCTA() {
         </Button>
 
         <div className="mt-4 space-y-1">
-          <p className="text-sm text-[#2d5a27]/75">
+          <p className="text-sm text-foreground/75">
             دفع عند الاستلام - شحن سريع لجميع الولايات
           </p>
-          <p className="text-xs text-[#2d5a27]/65">
+          <p className="text-xs text-foreground/65">
             ضمان جودة المنتج قبل الاستلام - الكمية محدودة
           </p>
         </div>

@@ -102,7 +102,7 @@ export function BeforeAfter() {
   const transformations = getTransformations()
 
   return (
-    <section id="results" className="py-20 bg-[#fafcf5]">
+    <section id="results" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         {/* العنوان */}
         <div className="text-center mb-12">
@@ -126,7 +126,7 @@ export function BeforeAfter() {
                 {/* صور قبل وبعد */}
                 <div className="grid grid-cols-2">
                   {/* قبل */}
-                  <div className="relative h-[420px] sm:h-[540px] md:h-[680px] bg-[#f9f1f1]">
+                  <div className="relative h-[420px] sm:h-[540px] md:h-[680px] bg-accent/18">
                     <Image
                       src={item.beforeImage}
                       alt={`نتيجة قبل - ${item.issue}`}
@@ -142,7 +142,7 @@ export function BeforeAfter() {
                     </p>
                   </div>
                   {/* بعد */}
-                  <div className="relative h-[420px] sm:h-[540px] md:h-[680px] bg-[#eef7da]">
+                  <div className="relative h-[420px] sm:h-[540px] md:h-[680px] bg-muted">
                     <Image
                       src={item.afterImage}
                       alt={`نتيجة بعد - ${item.result}`}

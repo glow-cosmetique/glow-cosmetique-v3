@@ -37,11 +37,11 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         {/* العنوان */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 mb-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/15 mb-4">
             <HelpCircle className="w-7 h-7 text-primary" />
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-balance">
@@ -59,9 +59,9 @@ export function FAQ() {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-card border border-border/50 rounded-xl px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-sm transition-all"
+                className="bg-card border border-border/70 rounded-xl px-6 data-[state=open]:border-accent/45 data-[state=open]:bg-accent/5 data-[state=open]:shadow-sm transition-all"
               >
-                <AccordionTrigger className="text-right font-bold hover:no-underline py-5 text-base">
+                <AccordionTrigger className="text-right font-bold text-foreground hover:no-underline py-5 text-base">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-5">

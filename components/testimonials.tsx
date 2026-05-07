@@ -9,7 +9,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-20 bg-[#fafcf5]">
+    <section className="py-20 bg-[var(--section-bg)]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">آراء الزبونات</span>
@@ -25,7 +25,7 @@ export function Testimonials() {
               <CardContent className="p-6">
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                    <Star key={i} className="h-4 w-4 lp-star fill-current" />
                   ))}
                 </div>
 

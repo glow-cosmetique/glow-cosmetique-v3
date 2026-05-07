@@ -44,12 +44,12 @@ export function Header() {
   }, [])
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
+    <header className="fixed top-0 right-0 left-0 z-50 lp-nav backdrop-blur-md border-b border-border shadow-sm">
 
       {/* ── شريط التوصيل ── */}
-      <div className="bg-[#263c2f] text-white text-center py-2 px-4">
+      <div className="lp-announce text-center py-2 px-4">
         <p className="text-xs sm:text-sm font-medium">
-          توصيل مجاني للطلبات فوق 5000 دج - عرض محدود
+          ✨ توصيل مجاني على طلبك كامل – دلال بشرتك يبدأ من هنا
         </p>
       </div>
 
@@ -83,7 +83,7 @@ export function Header() {
                 0
               </span>
             </Button>
-            <Button asChild className="font-semibold text-black">
+            <Button asChild className="font-semibold lp-cta">
               <a href="#order-section">تسوقي الآن</a>
             </Button>
           </div>
@@ -130,7 +130,7 @@ export function Header() {
               >
                 منتجاتنا
               </a>
-              <Button asChild className="w-full font-semibold text-black" onClick={() => setMobileMenuOpen(false)}>
+              <Button asChild className="w-full font-semibold lp-cta" onClick={() => setMobileMenuOpen(false)}>
                 <a href="#order-section">تسوقي الآن</a>
               </Button>
             </nav>

@@ -1,12 +1,19 @@
 import type { Metadata } from 'next'
-import { Cairo } from 'next/font/google'
+import { Alexandria, Tajawal } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
-const cairo = Cairo({
+const alexandria = Alexandria({
   subsets: ['arabic', 'latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-cairo',
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-alexandria',
+  display: 'swap',
+})
+
+const tajawal = Tajawal({
+  subsets: ['arabic', 'latin'],
+  weight: ['300', '400', '500', '700', '800', '900'],
+  variable: '--font-tajawal',
   display: 'swap',
 })
 
@@ -44,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${cairo.variable} bg-background`}>
+    <html lang="ar" dir="rtl" className={`${alexandria.variable} ${tajawal.variable} bg-background`}>
       <head>
         <script
           type="application/ld+json"
@@ -67,7 +74,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${cairo.className} antialiased`}>
+      <body className={`${tajawal.className} antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

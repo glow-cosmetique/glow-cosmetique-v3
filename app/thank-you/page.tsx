@@ -10,44 +10,44 @@ export default function ThankYouPage() {
   const savings = upsell.originalPrice - upsell.price
 
   return (
-    <main dir="rtl" className="min-h-screen bg-[#f8fbf1] text-[#244822]">
+    <main dir="rtl" className="min-h-screen bg-background text-foreground">
       <section className="container mx-auto px-4 py-10 md:py-16">
-        <div className="max-w-3xl mx-auto bg-white border border-[#e3edd0] rounded-3xl shadow-sm overflow-hidden">
-          <div className="px-6 md:px-10 py-8 text-center border-b border-[#e9f1dc] bg-[#f3f9e8]">
-            <CheckCircle2 className="w-14 h-14 mx-auto text-[#2d5a27] mb-3" />
-            <p className="text-sm font-bold text-[#2d5a27]/80 mb-2">تم استلام طلبك بنجاح</p>
+        <div className="max-w-3xl mx-auto bg-card border border-border rounded-3xl shadow-sm overflow-hidden">
+          <div className="px-6 md:px-10 py-8 text-center border-b border-border bg-muted">
+            <CheckCircle2 className="w-14 h-14 mx-auto text-primary mb-3" />
+            <p className="text-sm font-bold text-primary/80 mb-2">تم استلام طلبك بنجاح</p>
             <h1 className="text-2xl md:text-3xl font-extrabold mb-2">شكرا لثقتك</h1>
-            <p className="text-[#2d5a27]/75 text-sm md:text-base">
+            <p className="text-foreground/75 text-sm md:text-base">
               يتصل بك فريقنا قريباً لتأكيد العنوان والشحن
             </p>
           </div>
 
           <div className="px-6 md:px-10 py-8">
             <div className="text-center mb-6">
-              <span className="inline-flex items-center gap-2 bg-[#dff063] text-black font-extrabold text-sm px-4 py-1 rounded-full">
+              <span className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-extrabold text-sm px-4 py-1 rounded-full">
                 <Gift className="w-4 h-4" />
                 Upsell خاص بعد الطلب
               </span>
               <h2 className="text-xl md:text-2xl font-extrabold mt-4 mb-2">
                 كمّلي روتينك مع {upsell.name}
               </h2>
-              <p className="text-[#2d5a27]/75">
+              <p className="text-foreground/75">
                 عرض إضافي متاح الآن فقط قبل إغلاق الطلب.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-[#e3edd0] bg-[#fbfdf6] p-5 md:p-6 text-center mb-6">
-              <p className="text-sm text-[#2d5a27]/70 line-through">{upsell.originalPrice} دج</p>
+            <div className="rounded-2xl border border-border bg-secondary p-5 md:p-6 text-center mb-6">
+              <p className="text-sm text-foreground/70 line-through">{upsell.originalPrice} دج</p>
               <p className="text-4xl font-extrabold my-1">{upsell.price} دج</p>
-              <p className="text-sm font-bold text-[#2d5a27]/80">
+              <p className="text-sm font-bold lp-accent-text">
                 وفر/ي {savings} دج عند إضافة هذا المنتج الآن
               </p>
-              <p className="text-sm text-[#2d5a27]/75 mt-3">{upsell.description}</p>
+              <p className="text-sm text-foreground/75 mt-3">{upsell.description}</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 text-center">
-              <div className="text-xs bg-white border border-[#e5ecd8] rounded-lg py-2 px-2">نفس الشحنة - دفع عند الاستلام</div>
-              <div className="text-xs bg-white border border-[#e5ecd8] rounded-lg py-2 px-2">عرض صالح مباشرة بعد الطلب فقط</div>
+              <div className="text-xs bg-card border border-border rounded-lg py-2 px-2">نفس الشحنة - دفع عند الاستلام</div>
+              <div className="text-xs bg-card border border-border rounded-lg py-2 px-2">عرض صالح مباشرة بعد الطلب فقط</div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -74,7 +74,7 @@ export default function ThankYouPage() {
               </Button>
             </div>
 
-            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-[#2d5a27]/70">
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-foreground/70">
               <span className="inline-flex items-center gap-1">
                 <Truck className="w-4 h-4" />
                 شحن سريع لكل الولايات
