@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
 
@@ -8,17 +9,15 @@ const testimonials = [
     author: "سارة بن عمر",
     location: "الجزائر العاصمة",
     rating: 5,
-    avatar: "س",
-    avatarBg: "#F8E4DE",
+    avatarImage: "/avatars/sara-ben-omar.jpg",
   },
   {
     id: 2,
     content: "بصراحة فرق معايا بزاف، خاصة فالخدود لي كانوا ناشفين. النتيجة تبان من أول أسبوع.",
-    author: "أمينة بوزيد",
+    author: "أمنية بوزيد",
     location: "وهران",
     rating: 5,
-    avatar: "أ",
-    avatarBg: "#FCEBD9",
+    avatarImage: "/avatars/omnia-bouzid.jpg",
   },
   {
     id: 3,
@@ -26,8 +25,7 @@ const testimonials = [
     author: "نوال قادري",
     location: "قسنطينة",
     rating: 5,
-    avatar: "ن",
-    avatarBg: "#F3E3F2",
+    avatarImage: "/avatars/nawal-kadri.jpg",
   },
   {
     id: 4,
@@ -35,8 +33,7 @@ const testimonials = [
     author: "ريم بوشارب",
     location: "سطيف",
     rating: 5,
-    avatar: "ر",
-    avatarBg: "#FEE3E3",
+    avatarImage: "/avatars/rim-boucharb.jpg",
   },
   {
     id: 5,
@@ -44,8 +41,7 @@ const testimonials = [
     author: "خديجة مرابط",
     location: "تلمسان",
     rating: 5,
-    avatar: "خ",
-    avatarBg: "#F6EBD8",
+    avatarImage: "/avatars/khadija-mrabet.jpg",
   },
   {
     id: 6,
@@ -53,8 +49,7 @@ const testimonials = [
     author: "إيمان زراري",
     location: "عنابة",
     rating: 5,
-    avatar: "إ",
-    avatarBg: "#F5DFE7",
+    avatarImage: "/avatars/iman-zrari.jpg",
   },
 ]
 
@@ -91,10 +86,15 @@ export function Testimonials() {
 
                 <div className="flex items-center gap-3">
                   <div
-                    className="w-12 h-12 rounded-full border-2 border-[#E9C97A]/70 flex items-center justify-center shadow-sm"
-                    style={{ backgroundColor: t.avatarBg }}
+                    className="relative w-12 h-12 rounded-full border-2 border-[#E9C97A]/70 shadow-sm overflow-hidden"
                   >
-                    <span className="text-base font-extrabold text-[#6A2818]">{t.avatar}</span>
+                    <Image
+                      src={t.avatarImage}
+                      alt={`صورة ${t.author}`}
+                      fill
+                      className="object-cover"
+                      sizes="48px"
+                    />
                   </div>
                   <div>
                     <p className="font-semibold text-foreground">{t.author}</p>
