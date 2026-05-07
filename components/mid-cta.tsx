@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import { products } from "@/lib/products-data"
@@ -7,6 +10,22 @@ const FEATURED_PRODUCT_ID = 1
 export function MidCTA() {
   const product = products.find((p) => p.id === FEATURED_PRODUCT_ID) ?? products[0]
   const savings = product.originalPrice - product.price
+  const targetTime = useMemo(() => Date.now() + 1000 * 60 * 60 * 6, [])
+  const [timeLeft, setTimeLeft] = useState(targetTime - Date.now())
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(Math.max(targetTime - Date.now(), 0))
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [targetTime])
+
+  const totalSeconds = Math.floor(timeLeft / 1000)
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+  const formatTime = (value: number) => value.toString().padStart(2, "0")
 
   return (
     <section className="py-16 bg-secondary text-foreground border-y border-border">
@@ -14,6 +33,12 @@ export function MidCTA() {
         <span className="inline-block bg-accent/15 lp-accent-text text-sm font-extrabold px-4 py-1 rounded-full mb-4">
           ✦ خصم اليوم ينتهي قريبًا ✦
         </span>
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--card-border)] bg-white px-4 py-2 shadow-sm">
+          <span className="text-xs font-semibold text-[var(--card-label)]">باقي على نهاية العرض:</span>
+          <span className="font-mono text-sm font-extrabold tracking-wider text-[var(--btn-bg)]">
+            {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
+          </span>
+        </div>
         <h2 className="text-2xl md:text-3xl font-bold mb-2 text-balance">
           احصلي على بشرة أنعم وإشراقة أوضح خلال أسابيع
         </h2>

@@ -2,9 +2,54 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
 
 const testimonials = [
-  { id: 1, content: "بشرتي صارت ناعمة ومشرقة بعد أسبوعين فقط!", author: "سارة بن عمر", location: "الجزائر العاصمة", rating: 5, avatar: "س" },
-  { id: 2, content: "السيروم فرق معي كثير والتصبغات بدأت تخف.", author: "أمينة بوزيد", location: "وهران", rating: 5, avatar: "أ" },
-  { id: 3, content: "منتجات مناسبة فعلاً لبشرتنا والمناخ الجاف.", author: "نور الهدى", location: "قسنطينة", rating: 5, avatar: "ن" },
+  {
+    id: 1,
+    content: "من نهار بديت كريم الأرغان، بشرتي ولات طرية وما بقاتش تنشف كيما قبل.",
+    author: "سارة بن عمر",
+    location: "الجزائر العاصمة",
+    rating: 5,
+    avatar: "س",
+  },
+  {
+    id: 2,
+    content: "بصراحة فرق معايا بزاف، خاصة فالخدود لي كانوا ناشفين. النتيجة تبان من أول أسبوع.",
+    author: "أمينة بوزيد",
+    location: "وهران",
+    rating: 5,
+    avatar: "أ",
+  },
+  {
+    id: 3,
+    content: "أنا بشرتي حساسة وخفت نجرب، بصح الكريم جا خفيف وما دارلي حتى تهيج.",
+    author: "نوال قادري",
+    location: "قسنطينة",
+    rating: 5,
+    avatar: "ن",
+  },
+  {
+    id: 4,
+    content: "الترطيب يدوم كامل النهار، وحتى فالبرد والتشققات حسيت فرق كبير.",
+    author: "ريم بوشارب",
+    location: "سطيف",
+    rating: 5,
+    avatar: "ر",
+  },
+  {
+    id: 5,
+    content: "ريحتو هايلة وقوامو فاخر، عطاني نضارة طبيعية بلا ما يثقل الوجه.",
+    author: "خديجة مرابط",
+    location: "تلمسان",
+    rating: 5,
+    avatar: "خ",
+  },
+  {
+    id: 6,
+    content: "أحسن كريم مرطب جربتو هاد العام. حتى المكياج ولى يجي منظم فوق البشرة.",
+    author: "إيمان زراري",
+    location: "عنابة",
+    rating: 5,
+    avatar: "إ",
+  },
 ]
 
 export function Testimonials() {
@@ -12,28 +57,35 @@ export function Testimonials() {
     <section className="py-20 bg-[var(--section-bg)]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">آراء الزبونات</span>
+          <span className="inline-flex items-center rounded-full border border-[#E9C97A] bg-[#FFF4D6] px-4 py-2 text-sm font-bold text-[#8A5D00]">
+            10,000+ زبونة سعيدة
+          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 text-balance">
-            نتائج حقيقية من جزائريات مثلك
+            آراء الزبونات
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">+10,000 زبونة سعيدة في مختلف الولايات</p>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            تجارب حقيقية من كامل ولايات الجزائر مع كريم مرطب بزيت الأرغان
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {testimonials.map((t) => (
-            <Card key={t.id} className="lp-card">
+            <Card
+              key={t.id}
+              className="rounded-2xl border border-[#F2D8D0] bg-gradient-to-b from-[#FFF8F6] to-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+            >
               <CardContent className="p-6">
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 lp-star fill-current" />
+                    <Star key={i} className="h-4 w-4 fill-[#D4A017] text-[#D4A017]" />
                   ))}
                 </div>
 
                 <p className="text-foreground leading-relaxed mb-6">&ldquo;{t.content}&rdquo;</p>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="font-bold text-primary">{t.avatar}</span>
+                  <div className="w-10 h-10 rounded-full bg-[#F2D8D0] border border-[#E9C97A]/60 flex items-center justify-center">
+                    <span className="font-bold text-[#6A2818]">{t.avatar}</span>
                   </div>
                   <div>
                     <p className="font-semibold text-foreground">{t.author}</p>
