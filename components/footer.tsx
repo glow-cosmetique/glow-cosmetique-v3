@@ -43,7 +43,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-[var(--footer-txt)]/20">
-          <div className="flex items-center justify-center gap-5 sm:gap-7">
+          <div className="flex items-center justify-start gap-5 sm:gap-7">
             <span className="text-sm sm:text-base font-semibold tracking-wide text-[var(--footer-txt)]">
               CONNECT WITH US
             </span>
