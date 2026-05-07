@@ -238,7 +238,7 @@ function OrderFormContent() {
 
 export default function OrderForm() {
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense fallback={<div className="py-8 text-center text-sm text-muted-foreground">جاري التحميل...</div>}>
       <OrderFormContent />
     </Suspense>
   );
