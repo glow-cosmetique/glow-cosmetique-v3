@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
 
@@ -54,6 +53,9 @@ const testimonials = [
 ]
 
 export function Testimonials() {
+  const getFallbackAvatar = (name: string) =>
+    `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=F2D8D0&color=6A2818&bold=true`
+
   return (
     <section className="py-20 bg-[var(--section-bg)]">
       <div className="container mx-auto px-4">
@@ -88,12 +90,15 @@ export function Testimonials() {
                   <div
                     className="relative w-12 h-12 rounded-full border-2 border-[#E9C97A]/70 shadow-sm overflow-hidden"
                   >
-                    <Image
+                    <img
                       src={t.avatarImage}
                       alt={`صورة ${t.author}`}
-                      fill
-                      className="object-cover"
-                      sizes="48px"
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null
+                        e.currentTarget.src = getFallbackAvatar(t.author)
+                      }}
                     />
                   </div>
                   <div>
