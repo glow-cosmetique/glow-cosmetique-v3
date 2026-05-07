@@ -3,45 +3,12 @@
 import { useEffect, useState } from "react";
 import { ShoppingCart } from "lucide-react";
 import { products } from "@/lib/products-data";
-import {
-  getRecordedOrderCount,
-  RECORDED_ORDER_COUNT_EVENT,
-  RECORDED_ORDER_COUNT_KEY,
-  type RecordedOrderCountDetail,
-} from "@/lib/recorded-order-count";
 
 const FEATURED_PRODUCT_ID = 1;
 
 export function StickyBar() {
   const product = products.find((p) => p.id === FEATURED_PRODUCT_ID) ?? products[0];
-  const [recordedOrderCount, setRecordedOrderCount] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    setRecordedOrderCount(getRecordedOrderCount());
-
-    const onRecorded = (ev: Event) => {
-      const e = ev as CustomEvent<RecordedOrderCountDetail>;
-      if (typeof e.detail?.count === "number") {
-        setRecordedOrderCount(e.detail.count);
-      } else {
-        setRecordedOrderCount(getRecordedOrderCount());
-      }
-    };
-
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === RECORDED_ORDER_COUNT_KEY || e.key === null) {
-        setRecordedOrderCount(getRecordedOrderCount());
-      }
-    };
-
-    window.addEventListener(RECORDED_ORDER_COUNT_EVENT, onRecorded);
-    window.addEventListener("storage", onStorage);
-    return () => {
-      window.removeEventListener(RECORDED_ORDER_COUNT_EVENT, onRecorded);
-      window.removeEventListener("storage", onStorage);
-    };
-  }, []);
 
   useEffect(() => {
     const updateVisibility = () => {
@@ -88,11 +55,6 @@ export function StickyBar() {
         >
           <span className="relative inline-flex items-center justify-center">
             <ShoppingCart className="h-5 w-5" />
-            {recordedOrderCount > 0 && (
-              <span className="absolute -top-2 -left-2 min-w-5 h-5 px-1 rounded-full bg-black text-white text-[11px] leading-5 font-bold tabular-nums">
-                {recordedOrderCount}
-              </span>
-            )}
           </span>
           اطلبي الآن - الدفع عند الاستلام
         </button>
@@ -112,11 +74,6 @@ export function StickyBar() {
             >
               <span className="relative inline-flex items-center justify-center">
                 <ShoppingCart className="h-5 w-5" />
-                {recordedOrderCount > 0 && (
-                  <span className="absolute -top-2 -left-2 min-w-5 h-5 px-1 rounded-full bg-black text-white text-[11px] leading-5 font-bold tabular-nums">
-                    {recordedOrderCount}
-                  </span>
-                )}
               </span>
               اطلبي الآن - الدفع عند الاستلام
             </button>
