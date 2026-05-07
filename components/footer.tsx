@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
+import { Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, Music2 } from "lucide-react"
 
 export function Footer() {
   return (
@@ -42,8 +42,43 @@ export function Footer() {
           </div>
         </div>
 
+        <div className="pt-8 border-t border-[var(--footer-txt)]/20">
+          <div className="flex items-center justify-center gap-5 sm:gap-7">
+            <span className="text-sm sm:text-base font-semibold tracking-wide text-[var(--footer-txt)]">
+              CONNECT WITH US
+            </span>
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="text-[var(--footer-txt)]/90 hover:text-white transition-colors"
+            >
+              <Facebook className="w-6 h-6" />
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-[var(--footer-txt)]/90 hover:text-white transition-colors"
+            >
+              <Instagram className="w-6 h-6" />
+            </a>
+            <a
+              href="https://www.tiktok.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              className="text-[var(--footer-txt)]/90 hover:text-white transition-colors"
+            >
+              <Music2 className="w-6 h-6" />
+            </a>
+          </div>
+        </div>
+
         {/* الأسفل */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-[var(--footer-txt)]/20">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 mt-8 border-t border-[var(--footer-txt)]/20">
           <p className="text-sm text-[var(--footer-txt)]/90">
             &copy; {new Date().getFullYear()} Glow Cosmetique. جميع الحقوق محفوظة.
           </p>
