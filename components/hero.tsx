@@ -1,27 +1,9 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Sparkles, Leaf } from "lucide-react"
 
 export function Hero() {
-  const targetTime = useMemo(() => Date.now() + 1000 * 60 * 60 * 6, [])
-  const [timeLeft, setTimeLeft] = useState(targetTime - Date.now())
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(Math.max(targetTime - Date.now(), 0))
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [targetTime])
-
-  const totalSeconds = Math.floor(timeLeft / 1000)
-  const hours = Math.floor(totalSeconds / 3600)
-  const minutes = Math.floor((totalSeconds % 3600) / 60)
-  const seconds = totalSeconds % 60
-  const formatTime = (value: number) => value.toString().padStart(2, "0")
-
   return (
     <section className="relative min-h-[84vh] flex items-center overflow-hidden lp-hero">
       <div className="absolute inset-0 bg-gradient-to-b from-[#fff7f2] via-[#fdf0e8] to-[#fff7f2]" />
@@ -60,12 +42,6 @@ export function Hero() {
             <p className="text-sm lp-discount">
               عرض خاص: خصم 20% على أول طلب
             </p>
-            <div className="flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 shadow-sm">
-              <span className="text-xs font-semibold text-muted-foreground">ينتهي خلال:</span>
-              <span className="font-mono text-sm font-bold text-primary tracking-wider">
-                {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
-              </span>
-            </div>
           </div>
 
           {/* مؤشرات الثقة */}

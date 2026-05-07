@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useMemo, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -18,6 +19,22 @@ function ProductPlaceholder() {
 
 export function Products() {
   const product = products.find((p) => p.id === FEATURED_PRODUCT_ID) ?? products[0]
+  const targetTime = useMemo(() => Date.now() + 1000 * 60 * 60 * 6, [])
+  const [timeLeft, setTimeLeft] = useState(targetTime - Date.now())
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(Math.max(targetTime - Date.now(), 0))
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [targetTime])
+
+  const totalSeconds = Math.floor(timeLeft / 1000)
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+  const formatTime = (value: number) => value.toString().padStart(2, "0")
 
   return (
     <section id="products" className="py-20 bg-[var(--section-bg)]">
@@ -95,6 +112,13 @@ export function Products() {
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
               <span>عرض خاص لهذا الأسبوع فقط</span>
+            </div>
+
+            <div className="flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 shadow-sm w-fit">
+              <span className="text-xs font-semibold text-muted-foreground">ينتهي خلال:</span>
+              <span className="font-mono text-sm font-bold text-primary tracking-wider">
+                {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
+              </span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
