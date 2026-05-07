@@ -11,7 +11,9 @@ export function Footer() {
               <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center border border-accent/30">
                 <span className="lp-accent-text font-bold text-lg">G</span>
               </div>
-              <span className="text-xl font-bold text-[var(--footer-txt)]">Glow Cosmetique</span>
+              <span className="inline-flex items-center bg-[#F8F4F2] px-3 py-1 text-lg font-black uppercase tracking-tight text-[#2C1410]">
+                Glow Cosmetique
+              </span>
             </div>
             <p className="text-[var(--footer-txt)]/90 mb-6 max-w-sm">
               منتجات عناية بالبشرة طبيعية 100%، مصنوعة بحب في الجزائر لكل جزائرية تستحق بشرة مشرقة.
