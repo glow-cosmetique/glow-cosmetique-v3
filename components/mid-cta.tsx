@@ -30,14 +30,16 @@ export function MidCTA() {
   return (
     <section className="py-16 bg-secondary text-foreground border-y border-border">
       <div className="container mx-auto px-4 text-center">
-        <span className="inline-block bg-accent/15 lp-accent-text text-sm font-extrabold px-4 py-1 rounded-full mb-4">
-          ✦ خصم اليوم ينتهي قريبًا ✦
-        </span>
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--card-border)] bg-white px-4 py-2 shadow-sm">
-          <span className="text-xs font-semibold text-[var(--card-label)]">باقي على نهاية العرض:</span>
-          <span className="font-mono text-sm font-extrabold tracking-wider text-[var(--btn-bg)]">
-            {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
+        <div className="mb-4 flex flex-col items-center gap-3">
+          <span className="inline-block bg-accent/15 lp-accent-text text-sm font-extrabold px-4 py-1 rounded-full">
+            ✦ خصم اليوم ينتهي قريبًا ✦
           </span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-[var(--card-border)] bg-white px-4 py-2 shadow-sm">
+            <span className="text-xs font-semibold text-[var(--card-label)]">باقي على نهاية العرض:</span>
+            <span className="font-mono text-sm font-extrabold tracking-wider text-[var(--btn-bg)]">
+              {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
+            </span>
+          </div>
         </div>
         <h2 className="text-2xl md:text-3xl font-bold mb-2 text-balance">
           احصلي على بشرة أنعم وإشراقة أوضح خلال أسابيع
