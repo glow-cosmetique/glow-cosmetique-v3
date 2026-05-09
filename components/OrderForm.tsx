@@ -3,7 +3,7 @@
 import React, { useState, useRef, Suspense, useEffect, useMemo } from 'react';
 import { supabase } from '@/lib/supabase'; 
 import { products } from "@/lib/products-data"
-import { CheckCircle } from "lucide-react"
+import { CheckCircle, Award } from "lucide-react"
 import {
   ALGERIAN_PHONE_INVALID_MESSAGE,
   ALGERIAN_PHONE_PLACEHOLDER,
@@ -160,6 +160,20 @@ function OrderFormContent() {
           </div>
           <div className="text-5xl md:text-6xl font-black text-[#8B3A2A] drop-shadow-sm mt-1">
             {product.price} <span className="text-3xl md:text-4xl font-bold tracking-tight">دج فقط</span>
+          </div>
+        </div>
+
+        {/* Certified Stamp */}
+        <div className="flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-amber-50 to-yellow-50 border border-amber-200 p-3.5 rounded-2xl shadow-sm mb-6 w-full max-w-md mx-auto relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-16 h-16 bg-amber-200/20 rounded-bl-full"></div>
+          <div className="flex items-center gap-3 relative z-10">
+            <div className="bg-gradient-to-b from-amber-200 to-amber-400 p-2.5 rounded-full shadow-md border border-amber-300">
+              <Award className="w-6 h-6 text-amber-900" />
+            </div>
+            <div className="flex flex-col text-right">
+              <span className="text-base font-black text-amber-900 tracking-tight">حاصل على براءة اختراع</span>
+              <span className="text-[13px] font-bold text-amber-800/80">مجرب ومصادق عليه لضمان الفعالية التامة</span>
+            </div>
           </div>
         </div>
 

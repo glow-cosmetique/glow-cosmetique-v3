@@ -51,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${alexandria.variable} ${tajawal.variable} bg-background`}>
+    <html lang="ar" dir="rtl" className={`${alexandria.variable} ${tajawal.variable} bg-background scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"
