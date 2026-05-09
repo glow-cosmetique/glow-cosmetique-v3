@@ -10,7 +10,7 @@ const testimonials = [
     author: "سارة بن عمر",
     location: "الجزائر العاصمة",
     rating: 5,
-    avatarImage: "/avatars/sara-ben-omar.jpg",
+    avatarImage: "/avatars/sara-ben-omar.png",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const testimonials = [
     author: "أمنية بوزيد",
     location: "وهران",
     rating: 5,
-    avatarImage: "/avatars/omnia-bouzid.jpg",
+    avatarImage: "/avatars/omnia-bouzid.png",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const testimonials = [
     author: "نوال قادري",
     location: "قسنطينة",
     rating: 5,
-    avatarImage: "/avatars/nawal-kadri.jpg",
+    avatarImage: "/avatars/nawal-kadri.png",
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const testimonials = [
     author: "ريم بوشارب",
     location: "سطيف",
     rating: 5,
-    avatarImage: "/avatars/rim-boucharb.jpg",
+    avatarImage: "/avatars/rim-boucharb.png",
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const testimonials = [
     author: "خديجة مرابط",
     location: "تلمسان",
     rating: 5,
-    avatarImage: "/avatars/khadija-mrabet.jpg",
+    avatarImage: "/avatars/khadija-mrabet.png",
   },
   {
     id: 6,
@@ -50,7 +50,7 @@ const testimonials = [
     author: "إيمان زراري",
     location: "عنابة",
     rating: 5,
-    avatarImage: "/avatars/iman-zrari.jpg",
+    avatarImage: "/avatars/iman-zrari.png",
   },
 ]
 
