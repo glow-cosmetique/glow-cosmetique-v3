@@ -14,7 +14,7 @@ export function Hero() {
           <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-2 mb-8 shadow-sm bg-[var(--badge-bg)]">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-[var(--badge-txt)]">
-              +10,000 زبونة سعيدة في الجزائر
+              لماذا اختارتنا أكثر من 10,000 امرأة جزائرية ؟
             </span>
           </div>
 
@@ -27,8 +27,13 @@ export function Hero() {
 
           {/* الوصف */}
           <p className="text-lg sm:text-xl text-[var(--hero-sub)] max-w-2xl mx-auto mb-7 leading-relaxed text-pretty">
-            روتين طبيعي 100% للبشرة الجزائرية:
-            <span className="font-semibold text-foreground"> ترطيب، توحيد لون، وتقليل الحبوب بسرعة.</span>
+            روتين{" "}
+            <span className="bg-[#556B2F] text-white px-1.5 rounded-sm">طبيعي</span>{" "}
+            <span className="bg-[#556B2F] text-white px-1.5 rounded-sm">100%</span>{" "}
+            للبشرة الجزائرية:
+            <span className="font-semibold text-foreground"> ترطيب، توحيد لون، وتقليل الحبوب{" "}
+              <span className="bg-[#111] text-white px-1.5 rounded-sm">بسرعة</span>.
+            </span>
           </p>
 
           {/* CTA واحد رئيسي */}

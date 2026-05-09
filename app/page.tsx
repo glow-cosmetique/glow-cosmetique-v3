@@ -26,8 +26,8 @@ export default function LandingPage() {
       <main className="pt-28">
         <Hero />
         <Divider />
-        <Features />
-        <Divider />
+        {/* <Features />
+        <Divider /> */}
         <BeforeAfter />
         <Divider />
         <Products />

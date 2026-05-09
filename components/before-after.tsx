@@ -106,15 +106,11 @@ export function BeforeAfter() {
       <div className="container mx-auto px-4">
         {/* العنوان */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-4">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-semibold text-primary">نتائج حقيقية</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-balance">
-            شوفي الفرق بنفسك... نتائج حقيقية
+          <h2 className="inline-block px-10 py-6 bg-white/40 backdrop-blur-lg border border-white/60 rounded-3xl text-5xl sm:text-6xl md:text-7xl font-black mb-6 text-balance text-black shadow-lg">
+            نتائج حقيقية
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            صور حقيقية من زبوناتنا - نفس الإضاءة، نفس الزاوية، نتائج مذهلة
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto font-medium">
+            شوفي الفرق بنفسك... صور حقيقية من زبوناتنا قبل وبعد الاستعمال
           </p>
         </div>
 
