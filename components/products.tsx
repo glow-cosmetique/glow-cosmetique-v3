@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ShoppingBag, Star, CheckCircle } from "lucide-react"
+import { ShoppingBag, Star, CheckCircle, Droplets, Sparkles, Shield, Sun, Heart } from "lucide-react"
 import { products } from "@/lib/products-data"
 
 const FEATURED_PRODUCT_ID = 1
@@ -76,37 +76,53 @@ export function Products() {
             </p>
 
             <div className="space-y-2">
-              <p className="font-bold text-foreground">فوائده:</p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>ترطيب عميق لمدة 24 ساعة</span>
+              <p className="font-bold text-foreground text-lg mb-4">فوائده المذهلة:</p>
+              <ul className="space-y-4 text-base text-muted-foreground">
+                <li className="flex items-center gap-3">
+                  <div className="p-1.5 bg-blue-50 text-blue-500 rounded-lg">
+                    <Droplets className="w-5 h-5" />
+                  </div>
+                  <span className="font-medium text-foreground/80">ترطيب عميق لمدة 24 ساعة</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>تنعيم وتلطيف البشرة</span>
+                <li className="flex items-center gap-3">
+                  <div className="p-1.5 bg-amber-50 text-amber-500 rounded-lg">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <span className="font-medium text-foreground/80">تنعيم وتلطيف البشرة فوراً</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>تقليل الجفاف والتشققات</span>
+                <li className="flex items-center gap-3">
+                  <div className="p-1.5 bg-red-50 text-red-400 rounded-lg">
+                    <Shield className="w-5 h-5" />
+                  </div>
+                  <span className="font-medium text-foreground/80">تقليل الجفاف والتشققات</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>إعطاء نضارة وإشراق طبيعي</span>
+                <li className="flex items-center gap-3">
+                  <div className="p-1.5 bg-orange-50 text-orange-500 rounded-lg">
+                    <Sun className="w-5 h-5" />
+                  </div>
+                  <span className="font-medium text-foreground/80">إعطاء نضارة وإشراق طبيعي</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>مناسب لكل أنواع البشرة (حتى الحساسة)</span>
+                <li className="flex items-center gap-3">
+                  <div className="p-1.5 bg-green-50 text-green-500 rounded-lg">
+                    <Heart className="w-5 h-5" />
+                  </div>
+                  <span className="font-medium text-foreground/80">مناسب لكل أنواع البشرة (حتى الحساسة)</span>
                 </li>
               </ul>
             </div>
 
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="text-3xl font-bold text-[var(--card-price)]">{product.price} دج</span>
-              <span className="text-lg text-[var(--card-lbl)] line-through">{product.originalPrice} دج</span>
-              <span className="text-sm font-semibold px-2 py-1 rounded-md bg-[var(--badge-bg)] text-[var(--discount)]">
-                (توفر {product.originalPrice - product.price} دج)
-              </span>
+            <div className="mb-2 mt-4 flex flex-col items-start gap-2">
+              <div className="flex items-center gap-3">
+                <span className="text-xl md:text-2xl font-bold text-red-500/80 line-through decoration-2 decoration-red-500">
+                  {product.originalPrice} دج
+                </span>
+                <span className="inline-flex items-center justify-center bg-green-100 text-green-700 text-sm font-extrabold px-3 py-1 rounded-full border border-green-200 shadow-sm animate-pulse">
+                  خصم {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% (توفري {product.originalPrice - product.price} دج)
+                </span>
+              </div>
+              <div className="text-5xl md:text-6xl font-black text-[#8B3A2A] drop-shadow-sm mt-1">
+                {product.price} <span className="text-3xl md:text-4xl font-bold tracking-tight">دج فقط</span>
+              </div>
             </div>
 
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -114,11 +130,72 @@ export function Products() {
               <span>عرض خاص لهذا الأسبوع فقط</span>
             </div>
 
-            <div className="flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 shadow-sm w-fit">
-              <span className="text-xs font-semibold text-muted-foreground">ينتهي خلال:</span>
-              <span className="font-mono text-sm font-bold text-primary tracking-wider">
-                {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
-              </span>
+            {/* مؤشرات الندرة والسوشال بروف */}
+            <div className="w-full max-w-md my-4 flex flex-col gap-3">
+              {/* Live Viewers */}
+              <div className="flex items-center justify-center gap-2 bg-orange-50 border border-orange-200 text-orange-800 px-3 py-2.5 rounded-xl shadow-sm w-fit">
+                <span className="animate-pulse text-lg">🔥</span>
+                <span className="text-sm md:text-base font-bold">28 شخص يشاهدون هذا المنتج الآن</span>
+              </div>
+
+              {/* Scarcity Bar */}
+              <div className="flex flex-col gap-2.5 bg-red-50/80 border border-red-200 rounded-xl p-3.5 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                    </div>
+                    <span className="text-sm font-extrabold text-red-700">متبقي 9 قطع فقط!</span>
+                  </div>
+                  <span className="text-xs font-bold text-red-800/80">تم بيع 53 قطعة اليوم</span>
+                </div>
+                <div className="w-full bg-red-200 rounded-full h-2.5 overflow-hidden">
+                  <div className="bg-red-600 h-full rounded-full relative" style={{ width: '12%' }}>
+                    <div className="absolute inset-0 bg-white/20 animate-[shimmer_2s_infinite]"></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recent Order Notification */}
+              <div className="flex items-center gap-3 bg-white border border-green-100 shadow-sm rounded-xl p-3 mt-1 animate-in fade-in slide-in-from-bottom-2 duration-700 w-fit pr-4">
+                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0">
+                  <CheckCircle className="w-5 h-5" />
+                </div>
+                <div className="flex flex-col text-right">
+                  <span className="text-sm font-bold text-gray-800">فاطمة من وهران</span>
+                  <span className="text-xs font-medium text-gray-500 mt-0.5">قامت بطلب كريم الأرغان قبل 5 دقائق</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4 rounded-xl border-2 border-red-100 bg-gradient-to-r from-red-50 to-orange-50 p-4 shadow-sm w-fit">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl animate-pulse drop-shadow-sm">⏰</span>
+                <span className="text-base font-extrabold text-red-700 tracking-tight">ينتهي العرض خلال:</span>
+              </div>
+              <div className="flex items-center gap-2" dir="ltr">
+                <div className="flex flex-col items-center gap-1">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-b from-red-500 to-orange-600 text-xl font-black text-white shadow-lg ring-1 ring-black/10">
+                    {formatTime(hours)}
+                  </div>
+                  <span className="text-[11px] font-bold text-red-700/80">ساعات</span>
+                </div>
+                <span className="text-red-500/50 font-black text-2xl -mt-5 animate-pulse">:</span>
+                <div className="flex flex-col items-center gap-1">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-b from-red-500 to-orange-600 text-xl font-black text-white shadow-lg ring-1 ring-black/10">
+                    {formatTime(minutes)}
+                  </div>
+                  <span className="text-[11px] font-bold text-red-700/80">دقائق</span>
+                </div>
+                <span className="text-red-500/50 font-black text-2xl -mt-5 animate-pulse">:</span>
+                <div className="flex flex-col items-center gap-1">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-b from-red-500 to-orange-600 text-xl font-black text-white shadow-lg ring-1 ring-black/10">
+                    {formatTime(seconds)}
+                  </div>
+                  <span className="text-[11px] font-bold text-red-700/80">ثواني</span>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
