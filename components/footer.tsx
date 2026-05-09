@@ -50,7 +50,7 @@ export function Footer() {
               CONNECT WITH US
             </span>
             <a
-              href="https://www.facebook.com/"
+              href="https://www.facebook.com/glowcosmitque"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -59,7 +59,7 @@ export function Footer() {
               <Facebook className="w-6 h-6" />
             </a>
             <a
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/glow_cosmtique?fbclid=IwY2xjawRr0cBleHRuA2FlbQIxMABicmlkETFMTHAxdHFhQkVvb3RJYXBkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHoBcYfAIQ26OHUAHRhu_OAeyK5Sd6CzJHQK3rt9KGfmHz0msUDm9gvUqrJh3_aem_SFxGbg5dNFKSIRanVWjKqg"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -68,13 +68,22 @@ export function Footer() {
               <Instagram className="w-6 h-6" />
             </a>
             <a
-              href="https://www.tiktok.com/"
+              href="https://www.tiktok.com/@aybay_eco"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="TikTok"
               className="text-[var(--footer-txt)]/90 hover:text-white transition-colors"
             >
               <Music2 className="w-6 h-6" />
+            </a>
+            <a
+              href="https://web.whatsapp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="text-[var(--footer-txt)]/90 hover:text-white transition-colors"
+            >
+              <MessageCircle className="w-6 h-6" />
             </a>
           </div>
         </div>

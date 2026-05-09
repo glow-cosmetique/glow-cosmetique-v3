@@ -1,12 +1,14 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { Features } from "@/components/features"
-import { Products } from "@/components/products"
-import { BeforeAfter } from "@/components/before-after"
-import { Testimonials } from "@/components/testimonials"
-import { Footer } from "@/components/footer"
-import OrderForm from "@/components/OrderForm"
-import { StickyBar } from "@/components/StickyBar"
+import dynamic from "next/dynamic"
+
+const BeforeAfter = dynamic(() => import("@/components/before-after").then(mod => mod.BeforeAfter), { ssr: true })
+const Products = dynamic(() => import("@/components/products").then(mod => mod.Products), { ssr: true })
+const Testimonials = dynamic(() => import("@/components/testimonials").then(mod => mod.Testimonials), { ssr: true })
+const OrderForm = dynamic(() => import("@/components/OrderForm"), { ssr: true })
+const Footer = dynamic(() => import("@/components/footer").then(mod => mod.Footer), { ssr: true })
+const StickyBar = dynamic(() => import("@/components/StickyBar").then(mod => mod.StickyBar))
 
 export default function LandingPage() {
   return (
