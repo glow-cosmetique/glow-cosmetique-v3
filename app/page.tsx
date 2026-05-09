@@ -3,7 +3,6 @@ import { Hero } from "@/components/hero"
 import { Features } from "@/components/features"
 import { Products } from "@/components/products"
 import { BeforeAfter } from "@/components/before-after"
-import { MidCTA } from "@/components/mid-cta"
 import { Testimonials } from "@/components/testimonials"
 import { Footer } from "@/components/footer"
 import OrderForm from "@/components/OrderForm"
@@ -20,7 +19,6 @@ export default function LandingPage() {
         <BeforeAfter />
         <Products />
         <Testimonials />
-        <MidCTA />
 
         <section id="order-section" className="container mx-auto px-4 max-w-5xl">
           <OrderForm />

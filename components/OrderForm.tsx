@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, Suspense } from 'react';
+import React, { useState, useRef, Suspense, useEffect, useMemo } from 'react';
 import { supabase } from '@/lib/supabase'; 
 import { products } from "@/lib/products-data"
 import {
@@ -30,6 +30,24 @@ function OrderFormContent() {
     products.find((p) => p.id === upsellParam) ??
     products.find((p) => p.id === FEATURED_PRODUCT_ID) ??
     products[0]
+
+  const savings = product.originalPrice - product.price
+  const targetTime = useMemo(() => Date.now() + 1000 * 60 * 60 * 6, [])
+  const [timeLeft, setTimeLeft] = useState(targetTime - Date.now())
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(Math.max(targetTime - Date.now(), 0))
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [targetTime])
+
+  const totalSeconds = Math.floor(timeLeft / 1000)
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+  const formatTime = (value: number) => value.toString().padStart(2, "0")
 
   const wilayas = [
     "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna",
@@ -89,16 +107,45 @@ function OrderFormContent() {
   return (
     <div id="order-form" dir="rtl" className="w-full my-10 rounded-3xl overflow-hidden shadow-sm border border-border bg-card">
 
-      {/* ✅ قسم البرومو */}
-      <div className="lp-accent-soft text-center px-8 py-8 border-b border-border">
-       <span className="inline-block bg-accent/15 lp-accent-text text-sm font-extrabold px-4 py-1 rounded-full mb-4">
-          ✦ عرض لفترة محدودة ✦
-        </span>
-        <h3 className="text-2xl font-bold text-foreground mb-2">{product.name}</h3>
-        <p className="text-4xl font-extrabold lp-accent-text mb-2">{product.price} دج فقط</p>
-        <p className="text-sm text-foreground/80">بدل {product.originalPrice} دج - الدفع عند الاستلام</p>
+      {/* ✅ قسم البرومو (Merged) */}
+      <div className="lp-accent-soft text-center px-4 sm:px-8 py-8 border-b border-border flex flex-col items-center">
+        <div className="mb-4 flex flex-col items-center gap-3">
+          <span className="inline-block bg-accent/15 lp-accent-text text-sm font-extrabold px-4 py-1 rounded-full">
+            ✦ خصم اليوم ينتهي قريبًا ✦
+          </span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-[var(--card-border)] bg-white px-4 py-2 shadow-sm">
+            <span className="text-xs font-semibold text-[var(--card-label)]">باقي على نهاية العرض:</span>
+            <span className="font-mono text-sm font-extrabold tracking-wider text-[var(--btn-bg)]">
+              {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
+            </span>
+          </div>
+        </div>
+
+        <h2 className="text-2xl md:text-3xl font-bold mb-2 text-balance text-foreground">
+          احصلي على بشرة أنعم وإشراقة أوضح خلال أسابيع
+        </h2>
+        <h3 className="text-xl font-bold text-foreground/90 mb-2">{product.name}</h3>
+        <p className="text-foreground/80 mb-6 max-w-xl mx-auto">
+          تركيبة مناسبة للبشرة الجزائرية بنتائج ملحوظة مع الاستعمال المنتظم
+        </p>
+
+        <div className="mb-3">
+          <p className="text-lg md:text-xl text-foreground/65 line-through">
+            {product.originalPrice} دج
+          </p>
+          <p className="text-4xl font-extrabold lp-accent-text">
+            {product.price} دج فقط
+          </p>
+          <p className="text-sm font-bold lp-accent-text mt-1">
+            توفري اليوم {savings} دج
+          </p>
+        </div>
+        <p className="text-sm md:text-base text-foreground/80 mb-4">
+          ⭐ {product.rating} / 5 من {product.reviews}+ مراجعة حقيقية
+        </p>
+
         {searchParams.get("upsell") && (
-          <p className="text-xs text-foreground/70 mt-2">تم تفعيل عرض إضافي خاص على هذا المنتج</p>
+          <p className="text-xs text-foreground/70 mt-2 bg-accent/10 py-1 px-3 rounded-full">تم تفعيل عرض إضافي خاص على هذا المنتج</p>
         )}
       </div>
 
